@@ -104,8 +104,94 @@ where you begin to imagine a prototype to address the core problem you identifie
 research.***
 - ***Your storyboard***
 - ***At least 1 figure that is not from your storyboard***
-    
-    [Blog Post]
+
+## Title: Short Videos, Short Attention Spans? Insights from Our User Research
+
+### Introduction
+
+Across social media platforms and video-sharing sites, **short-form content**—videos less than 30 seconds long—seems to dominate our feeds. Meanwhile, longer videos (>30 seconds, often several minutes or more) remain important for in-depth storytelling and detailed discussions. Our research aimed to uncover whether short-form videos are indeed shrinking our attention spans and, more importantly, how content creators can address the evolving ways audiences engage with video content.
+
+---
+
+### Methods
+
+1. **Surveys**  
+   We distributed an online survey to capture quantitative data about video-watching habits, perceived attention spans, and reasons users start or stop watching a video. We focused on a sample of **UCLA students** and other peers we could reach quickly (predominantly Chinese and English-speaking participants aged 17–35).
+
+2. **Interviews (In-depth Conversations)**  
+   We spoke informally with a few content creators to understand their decision-making process. While we did not conduct extensive interviews due to time constraints, these conversations shed light on how creators think about balancing **emotional engagement** and **information density**.
+
+---
+
+### Key Findings
+
+1. **Perceived Attention Decline**  
+   - A striking **80.8%** of respondents reported feeling that their attention spans had declined, especially in academic or task-related settings like reading, classroom engagement, and study time.  
+
+2. **Short vs. Long Video Consumption**  
+   - Respondents’ consumption of short videos ranged widely (25–75% of daily viewing). **However, we found no definitive correlation** between short-video usage and self-reported attention decline. In other words, people who watch lots of short videos or very few short videos **both** reported similar struggles with staying focused.
+
+3. **Divided Opinions**  
+   - **53.8%** of participants blamed short videos for their attention loss, but this belief did **not** neatly align with the percentage of short-video consumption. Users are clearly still split on short videos’ role in perceived attention decline.
+
+4. **What Keeps Viewers Engaged**  
+   - Three major factors surfaced for holding audience attention:
+     1. **Compelling Storytelling**  
+     2. **High-Quality Production**  
+     3. **Engaging Pace**  
+
+5. **Reasons for Dropping Off**  
+   - Users quit watching a video primarily because it is *boring* (**46.2%**), *not what they expected* (**26.9%**), or has *slow pacing* (**19.2%**).
+
+6. **Content Sharing Motivations**  
+   - **76.9%** of participants are far more likely to share *funny* or *emotion-evoking* content. Emotional resonance is a powerful driver of virality.
+
+7. **Creator Perspectives**  
+   - Our conversations with content creators revealed a tension between focusing on *factual/educational details* vs. *emotional hooks*. While basic analytics tools can show watch time or average viewer retention, **there is limited guidance** on whether (and how) to modify content pacing, emotional arcs, or information density to keep audiences engaged.
+
+---
+
+### A Quick Look at the Data
+
+Below is a conceptual figure illustrating the **top three reasons** users reported dropping off from a video. (Percentages based on our survey results.)
+
+```
+        |--------------------------------|
+        |        Why Users Stop          |
+        |--------------------------------|
+Reasons  |   Boring    |   Not Expected  |  Slow Pacing  |
+        |--------------------------------|
+%        |    46.2%    |     26.9%       |     19.2%     |
+        |--------------------------------|
+```
+
+*Figure 1. Boring content, mismatched expectations, and slow pacing lead to significant audience drop-offs.*
+
+---
+
+### Problem Statement
+
+> **Content creators struggle to optimize their videos for audience retention due to the unpredictable nature of attention spans. While analytics tools track view counts and watch times, they do not provide actionable guidance on how to balance emotional engagement and information density. Creators often resort to trial-and-error in deciding whether to emphasize facts, emotions, or both—and lack systematic feedback on which approach works best for their audience.**
+
+---
+
+### Storyboard 
+
+1. **Panel 1**  
+   Mike, a content creator, is at his desk working on a script. He’s outlining the structure of his upcoming video, deciding which parts will be purely informational and which parts will appeal more to viewers’ emotions.  
+   Mike’s computer screen shows a file named “Script Feb. 6,” with bullet points and a few icons representing scenes or key segments.
+
+2. **Panel 2**  
+   Now in the editing stage, Mike grows frustrated. He has footage of himself explaining concepts, but he’s worried viewers will get bored and click away if he doesn’t add a stronger hook.  
+   We see his editing software on-screen; Mike is frowning at pacing markers. A partially rendered timeline indicates where he’s inserted an emotional anecdote, but he’s not sure it’s enough.
+
+3. **Panel 3**  
+   Mike has an idea to spice things up. He decides to integrate short, meme-like clips or a quick story snippet to engage viewers more deeply.  
+   He adjusts the script based on his insights from analytics—notes in green highlight “should add …” or “emotional hook here.” The video timeline on-screen also updates to reflect these changes.
+
+---
+
+**We hope this blog post gives a clear picture of the issues surrounding short vs. long video engagement and offers a glimpse into a potential solution that better aligns with both user needs and creator goals.**
     
 
 ***DEPTH (optional, not required) [+2]: Pick a model research paper with a formative study.
