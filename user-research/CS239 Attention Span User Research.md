@@ -42,6 +42,10 @@ Our survey reveals that the majority of respondents (80.8%) perceive decline in 
 
 On an interesting note, 30% of the users admit they have difficulty keep paying attention when completing this survey.
 
+Understanding why user stop watching videos wand what motivates them to share content is valuable 
+to content creators. The primary reason why a user quite watching a video is boring content (46.2%), 
+content different from what's expected (26.9%), and slow pacing (19.2%). When it comes to content sharing, the most common reason is overwelmingly funny content (76.9%). This suggest contents that evoke strong feelings from users (especially joy) have a much higher chance of being shared. 
+
 ## # After you get started with user research
 
 ***Synthesize your user research into:***
@@ -90,15 +94,33 @@ model paper and why you chose it.***
 Has your user research contradicted or challenged any of these assumptions? If so,
 which ones? How?***
 
+Most assumptions we made are not challenged. However, we did assume short videos are more popular than long videos. 
+Our survey suggests that, at least from user self reporting, most people consume equally or more long videos than short videos.
+
 ***What does your user research tell you about what kinds of interactive
 systems/solutions are unlikely to be useful/successful? Why not? Any hypotheses about
 what features of an interactive system will be useful? Why?***
+
+For the audience user group, creating a focus helper or a time-based usage tracker/limiting tool might not be helpful. According to our user survey, most users experience decline of attention span despite various short video usage time, so limiting short video usage might not be the key factor to solve the issue. For the conctent creator user group, a audience analysis tool that only track audience demographic or watch time may not be useful.
+A useful feature for content creators would be an analysis tool that monitors why audience stop watching their content and also give feedbacks to their content.
+
 
 ***What questions do you have about your users? What hunches or hypotheses do
 you have about promising solutions? What is one thing you can do to begin answering
 these questions?***
 
+We're curious about the real cause of declining attention span and if we are able to deliver any feasible solution to it for the audience user group.  
+Since so many survey respondent claim they watch more long videos but also experiences a decline of attention span, then there might be more factors to this problem than 
+we initially though. 
+One promising hypothesis is that the shortened attention span is not a direct result of consuming short videos, rather it's a product of the over all shift in 
+media consumption habits and recommendation feeding algorithms. To answer this question, we can conduct more qualitative study, including in-depth interviews with both
+user groups, audience and content creators, to better understand their behaviors and struggles.
+
 ***Did you use a generative AI tool for any part of this assignment? If so, which one and
 how?***
 
+We've used DeepSeek at the very beginning to explore what possible survey questions to include, though afterwards we've changed the majority of them.
+
 ***How much time did you spend on this assignment as a group? Individually?***
+
+Ruichen: 5hrs
