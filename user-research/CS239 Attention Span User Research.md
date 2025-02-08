@@ -32,9 +32,12 @@ methodological choice. You can employ multiple methods or just one. Make sure yo
 
 ***Write your user research protocol.*** 
 
-- Recruitment strategy: We deploy google form and send out in group chat to survey UCLA students. Due to time constraint, most of our responses comes from Chinese students in various WeChat groups we are in.
-- Time and place for each user research session:
-- Each member’s role and responsibilities:
+- Recruitment strategy: We deploy google form and send out in group chat to survey UCLA students. Due to time constraint, most of our responses comes from Chinese students in various WeChat groups we are in. We plan on interviewing some content creators during the weekend. 
+- Time and place for each user research session: Online (google form, social media)
+- Each member’s role and responsibilities: 
+    - Zihan Jiang: Construct research strategy and methodology, design survey, survey result analysis
+    - Ruichen Zheng: Design survey, survey result analysis
+    - Weihan Qu: Conduct Interview, survey result analysis
 
 ## # Conducting user research
 
@@ -233,5 +236,6 @@ We've used DeepSeek at the very beginning to explore what possible survey questi
 
 ***How much time did you spend on this assignment as a group? Individually?***
 
-Ruichen: 5hrs
-Weihan: 4hrs
+- Zihan: 5hrs
+- Ruichen: 5hrs
+- Weihan: 4hrs
