@@ -234,3 +234,4 @@ We've used DeepSeek at the very beginning to explore what possible survey questi
 ***How much time did you spend on this assignment as a group? Individually?***
 
 Ruichen: 5hrs
+Weihan: 4hrs
