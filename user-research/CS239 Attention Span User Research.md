@@ -50,8 +50,33 @@ content different from what's expected (26.9%), and slow pacing (19.2%). When it
 
 ***Synthesize your user research into:***
 
-- Personas + Scenarios (at least one persona, one scenario)
-- Process map or more in-depth task analysis (at least one)
+- Personas + Scenarios
+* Persona 1: Lily
+  * Age: 22, college junior
+  * Spends 1-2 hours daily watching short videos, mostly entertainment and life-related content (makeup, trendy restaurants).
+  * Sometimes struggles to maintain focus.
+  * More likely to share videos that evoke emotions (e.g., humorous clips).
+  * Finds high-information-density videos overwhelming unless they are on topics of personal interest.
+* Scenario 1:
+  * Lily starts scrolling through TikTok while taking a study break.
+  * She comes across a detailed makeup tutorial video. She finds it overwhelming and skips after 20 seconds.
+  * Next, she sees a video with an emotional story. She watches the full video and even shares it with friends.
+ 
+* Persona 2: Mike
+  * Age: 26, part-time YouTube and TikTok content creator.
+  * Content Type: Creates both short-form videos (TikTok, YouTube Shorts) and long-form content (YouTube).
+  * Wants to expand his audience in both platforms.
+  * Spends a large amount of time editing videos
+  * Worried - sometimes an information-packed section performs well, sometimes an emotional hook gets more traction.
+* Scenario 2:
+  * Mike decides to create a new video about a recent scientific breakthrough.
+  * He drafts the content and faces a dilemma: focus on pure facts or frame it as a compelling story to make it more engaging?
+  * When editing the video, he decided to mainly focus on facts, but also mention some stories or memes.
+  * After posting the video, he found that more people comment and react to the meme section.
+  * He feels uncertain — despite the slight improvement, he still lacks a clear way to measure and optimize the balance between emotion and information.
+
+
+- Process map
 
 ***Articulate a problem statement. A problem statement should illuminate the core of
 the issue you observe. Often, there is a contrastive tension between what users want to
@@ -64,12 +89,11 @@ you should take next.***
 vs. have to do?
 - Double check: Does your storyboard communicate/highlight this core tension?
 
+Content creators struggle to optimize their videos for audience retention due to the unpredictable nature of attention spans. When creating videos, they often rely on intuition when deciding how to balance emotional engagement and information density. Current tools provide basic analytics (e.g., views, retention rates) but do not offer actionable insights on how content structure influences attention. As a result, creators face difficulties in deciding whether their videos should be more factual, emotionally driven, or a mix of both. Without a systematic approach to measure and refine this balance, content optimization remains a trial-and-error process.
+
 ***Storyboard of how your proposed system could address the core problem. This is
 where you begin to imagine a prototype to address the core problem you identified.***
 
-***DEPTH (optional, not required) [+1]: Map out a design space of existing tools
-(production or research) for supporting similar tasks x users x domains. Your design
-space should include at least five other comparable tools.***
 
 ## # Communicate what you have learned
 
