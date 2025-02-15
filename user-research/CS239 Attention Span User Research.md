@@ -49,6 +49,18 @@ Understanding why user stop watching videos wand what motivates them to share co
 to content creators. The primary reason why a user quite watching a video is boring content (46.2%), 
 content different from what's expected (26.9%), and slow pacing (19.2%). When it comes to content sharing, the most common reason is overwelmingly funny content (76.9%). This suggest contents that evoke strong feelings from users (especially joy) have a much higher chance of being shared. 
 
+DEPTH: We also did an additional round of user research by interviewing 5 content creators. See the "interview.md" for notes on the interviews.
+The following is the summary from the interviews:
+
+Our interviews reveal that content creators prioritize engagement and audience retention, with goals ranging from self-expression to monetization. Most use both short and long videos, adjusting content length based on platform trends and audience feedback. From the participants' view points, boring content and slow pacing are key reasons for audience drop-off, making fast-paced editing, sense of humor, storytelling, and trending elements crucial for engagement.
+
+Existing analytics tools help track watch time and retention, but creators lack insights on why viewers stop watching, often relying on trial and intuition to optimize content. A major gap exists in analytics tools, highlighting the need for solutions that not only track audience behavior but also provide actionable feedback on content improvement.
+
+Some interesting findings:
+- The shift toward shorter videos is not purely driven by attention span decline; instead, many creators shorten their content because shorter videos tend to perform better on platforms due to algorithmic reach. So apart from the content of the video, platform incentives and distribution mechanisms should also be taken into account (this would be hard though).
+- Mid-length videos (3-6 minutes) tend to be the worst performers, as they often fail to capture the casual appeal of short videos while lacking the depth or storytelling needed to retain viewers in long-form content. Unless they provide high information density or strong narrative structure, these videos struggle to hold audience attention.
+
+
 ## # After you get started with user research
 
 ***Synthesize your user research into:***
@@ -199,9 +211,6 @@ Reasons  |   Boring    |   Not Expected  |  Slow Pacing  |
 **We hope this blog post gives a clear picture of the issues surrounding short vs. long video engagement and offers a glimpse into a potential solution that better aligns with both user needs and creator goals.**
     
 
-***DEPTH (optional, not required) [+2]: Pick a model research paper with a formative study.
-Write your user research as a formative study section. In your submission, specify your
-model paper and why you chose it.***
 
 ## # Reflection
 
@@ -230,6 +239,17 @@ we initially though.
 One promising hypothesis is that the shortened attention span is not a direct result of consuming short videos, rather it's a product of the over all shift in 
 media consumption habits and recommendation feeding algorithms. To answer this question, we can conduct more qualitative study, including in-depth interviews with both
 user groups, audience and content creators, to better understand their behaviors and struggles.
+
+***Takeaway from Crit: What are the “experiments” you will test going forward? / What are your next steps?***
+
+1. Comparative Analysis: Understanding the Limitations of Existing Tools
+We will conduct a more specific comparative analysis of current editing and analytics tools, such as YouTube Analytics, Descript, and Kapwing. By evaluating what insights these tools provide versus what creators actually need, we can clarify gaps that our solution should address.
+
+2. Design Workshop with Content Creators: Gathering Direct Input on Needs
+We will host a workshop or brainstorming session where creators describe their workflow and challenges, so that we could get direct input from content creators on what features they need.
+
+3. Sketching a Prototype of the Script Advisor Tool
+Based on insights from the comparative analysis and design workshop, we will create a prototype of the tool. This prototype will be iteratively refined through user testing, ensuring it provides actionable feedbacks that align with real-world content creation needs.
 
 ***Did you use a generative AI tool for any part of this assignment? If so, which one and
 how?***
