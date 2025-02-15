@@ -93,6 +93,38 @@ Yes, I do. I review metrics like view counts and completion rates, especially no
 6. **Have you noticed any changes in your audience’s attention span (average watch time?) over time? If so, how has that influenced the way you create content?**  
 I’ve noticed that with the rise of short-video platforms, audiences now have a stronger preference for quickly accessible information. As a result, I incorporate more rapid scene changes and transition animations in my long videos to keep the pace tight. Still, my core audience is willing to watch longer content as long as it remains informative and entertaining.
 
+Content Creator 5
+- Primary Goal: Initially started as a way to document daily life but continued due to good audience engagement and growing views.
+- Content Type: Dance-related content, including training, competition vlogs, and product recommendations.
+- Video Length & Platform Strategy:
+  - Posts the same content on both short-video and long-video platforms without major edits.
+  - Video length varies naturally based on content type:
+      - Product recommendations / vlogs → longer.
+      - Dance clips → usually shorter.
+  - Adjusts content length based on audience feedback (e.g., if viewers request vlogs in comments, new vlogs are made).
+- Creation Process & Challenges:
+  - Product recommendation videos → Outlines a rough script beforehand.
+  - Other videos → Recorded spontaneously, edited in chronological order.
+- Editing complexity:
+  - Long videos → More footage to process, sometimes include additional unplanned details that need to be put together.
+  - Short videos → Simpler edits, with less concern about restructuring.
+- Ideal Length & Adjustments:
+  - Dance videos → Under 1 minute.
+  - Vlogs → Around 5 minutes.
+  - Product recommendation videos → Under 10 minutes.
+  - Observed that shorter videos perform better, leading to a shift toward shorter content. Noticed decreasing watch time for long vlogs over time, which influenced adjustments in video length.
+- Unplanned Edits & Engagement Strategies:
+  - Successful content elements:
+    - Using popular songs or trending elements to attract viewers.
+    - Following viewer feedback from comments when deciding what to create next.
+    - In longer videos, adding humor and storytelling elements to increase emotional connection.
+  - Audience Attention & Observations:
+    - Feels that fewer people finish long vlogs now compared to before.
+    - Adapts based on intuition and gradual observation of audience preferences rather than formal guidelines.
+    - Believes content quality matters most—a well-liked topic or a highly engaging presentation keeps viewers interested.
+- Challenges Faced: Initially worried about competition in the dance video space and how views compared to others. Over time, learned to focus on the supportive audience rather than stressing about numbers, which ironically helped improve engagement.
+
+
 
 Summary:
 Short videos are only partially responsible for the decline in attention spans. 
