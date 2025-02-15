@@ -17,3 +17,13 @@ During the Q&A session, someone raised a question: If a tool like this exists, w
 The Q&A also made me recognize that while our presentation was clear, we need to be even more explicit when explaining our concept, especially to those unfamiliar with this space. Certain aspects that seemed intuitive to us might not be immediately clear to an outside audience, so in future presentations, I should focus on articulating our key ideas in a way that is both accessible and compelling (well, same as making a video both informative and engaging as we aim to do in this project).
 
 Additionally, presentation from other groups highlighted an important point: some users might avoid tools that seem too complex, unfamiliar, or unreliable. This raised the challenge that we need to ensure that our tool doesn’t feel too technical for casual creators. We will ensure that our tool enhances creativity rather than creating barriers.
+
+Ruichen Zheng's personal reflection:
+
+During my presentation, I highlighted a critical finding from our initial survey: there is no clear correlation between self-reported declines in attention span and self-reported short video usage. This observation suggests two important takeaways.
+
+First, relying on self-reported attention span decline may not be a reliable measure. Many participants attributed difficulties such as struggling to focus in class or reading academic papers to a general decline in attention span. However, these challenges are widely prevalent and may not necessarily indicate a true reduction in attentional capacity—rather, they could stem from other cognitive or environmental factors. This raises concerns about the accuracy of self-perception in measuring attention-related changes.
+
+Second, the lack of correlation suggests that short video consumption may not be the primary factor influencing attention span. There could be underlying causes, such as cognitive overload, stress, or changing media consumption habits beyond just short-form content. 
+
+Moving forward, a more objective approach to measuring attention—such as behavioral observation interviews—could provide clearer insights. 
