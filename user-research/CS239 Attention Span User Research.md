@@ -251,6 +251,8 @@ We will host a workshop or brainstorming session where creators describe their w
 3. Sketching a Prototype of the Script Advisor Tool
 Based on insights from the comparative analysis and design workshop, we will create a prototype of the tool. This prototype will be iteratively refined through user testing, ensuring it provides actionable feedbacks that align with real-world content creation needs.
 
+Personal reflections see "reflection.md"
+
 ***Did you use a generative AI tool for any part of this assignment? If so, which one and
 how?***
 
