@@ -48,6 +48,51 @@ Content Creator 2
   - Creating long tutorial videos required extensive filming and selecting usable footage, making both shooting and editing difficult.
 
 
+### **Content Creator 3**
+
+1. **Do you create only one type of video (short/long) or both?**  
+   I create exclusively short videos, usually between 1 to 2 minutes.
+
+2. **(If not both) Why not the other?**  
+   I’ve tried making longer videos before, but they typically require more in-depth editing and scripting. Short videos fit my schedule and my audience’s preference better.
+
+3. **(If both) Which one is more difficult to make? Why?**  
+   *(Not applicable since I only make short videos.)*  
+   However, in my brief experience with longer videos, I found them challenging because it’s harder to maintain consistent pacing and quality over a longer duration.
+
+4. **Do you adjust content based on the feedback? Based on the data/trend?**  
+   Definitely. I post polls on my social media to see what type of content viewers want next, and I keep a close eye on my analytics. If a certain topic resonates well, I’ll produce more videos around it. If something doesn’t perform, I either switch up the format or retire that concept.
+
+5. **What strategies do you use to keep the audience engaged throughout the video? (length of video, more memes or jokes, more information)**  
+   - **Length**: I keep it short and snappy—1 to 2 minutes max.  
+   - **Story Hooks**: I often start with a question or a quick anecdote to pique curiosity.  
+   - **Edits & Effects**: I add small text overlays, memes, and music transitions to keep energy levels high.
+
+6. **Have you noticed any changes in your audience’s attention span (average watch time?) over time? If so, how has that influenced the way you create content?**  
+   I haven’t seen a dramatic shift in average watch times. My audience seems pretty stable, but I do notice spikes when I release trendy or seasonal content. I’ve learned to time my uploads around big events or holidays to keep watch times consistent.
+
+
+### **Content Creator 4**
+
+1. **Do you create only one type of video (short/long) or both?**  
+I do both. My short videos are usually around one minute long, while my long videos are typically over 10 minutes.
+
+2. **(If not both) Why not the other?**  
+*(Not applicable because I produce both.)*
+
+3. **(If both) Which one is more difficult to make? Why?**  
+I find long videos more challenging. They require a larger amount of footage—capturing various scenes to piece together—and the editing process is more complex. I need to ensure the overall story or theme remains cohesive, while also finding ways to keep the audience engaged throughout a 10-plus minute runtime.
+
+4. **Do you adjust content based on feedback? Based on data/trend?**  
+Yes, I do. I review metrics like view counts and completion rates, especially noting where viewers tend to drop off. If I see that certain types of short videos have high engagement, I’ll produce more content in that style. I also keep an eye on trending topics, such as holiday events or popular TV shows, and try to incorporate these themes into my videos.
+
+5. **What strategies do you use to keep the audience engaged throughout the video? (length of video, more memes or jokes, more information)**  
+- **Short Videos:** They need to be fast-paced with attractive music and smooth transitions.  
+- **Long Videos:** I break the video into segments using chapter titles or on-screen subtitles so viewers can easily navigate to the parts they’re most interested in. I also insert humorous elements or interactive questions to enhance engagement.
+
+6. **Have you noticed any changes in your audience’s attention span (average watch time?) over time? If so, how has that influenced the way you create content?**  
+I’ve noticed that with the rise of short-video platforms, audiences now have a stronger preference for quickly accessible information. As a result, I incorporate more rapid scene changes and transition animations in my long videos to keep the pace tight. Still, my core audience is willing to watch longer content as long as it remains informative and entertaining.
+
 
 Summary:
 Short videos are only partially responsible for the decline in attention spans. 
