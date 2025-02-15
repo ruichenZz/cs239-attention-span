@@ -79,7 +79,7 @@ content different from what's expected (26.9%), and slow pacing (19.2%). When it
   * He feels uncertain — despite the slight improvement, he still lacks a clear way to measure and optimize the balance between emotion and information.
 
 
-- Process map
+- Process map: see the file "process_map.jpg in the folder"
 
 ***Articulate a problem statement. A problem statement should illuminate the core of
 the issue you observe. Often, there is a contrastive tension between what users want to
@@ -97,6 +97,8 @@ Content creators struggle to optimize their videos for audience retention due to
 ***Storyboard of how your proposed system could address the core problem. This is
 where you begin to imagine a prototype to address the core problem you identified.***
 
+- Storyboard: see the file "storyboard.jpg" in the folder
+- DEPTH - design space: see the file "design_space.jpg" in the folder
 
 ## # Communicate what you have learned
 
