@@ -4,13 +4,15 @@ Content creators struggle to optimize videos for audience retention due to decre
 
 [+1] Create a paper prototype. Take + upload pictures or a video of your paper prototype.
 Paper prototype see the attatchments.
+Video explanation: https://youtu.be/YhQa6FDptCI
  
 
 [+0.5] Summarize 1-3 takeaways from the feedback you received in class. 
 1. Easy to use: Since the interface is similar to existing tools, users found it intuitive and easy to start using.
 2. Clarity & Guidance: Some elements need clearer instructions or explanations (e.g., hover text, placeholders) to help users understand how different parts correlate and what each color represents.
 3. Saving and versions: Users requested a save button and a way to view past versions (e.g., version1, version2, version3) for tracking changes.
-
+4. Default Goals: Users requested to have a default setting on inputing "Goals", maybe rows of guidelines that the user can choose to check or 
+a simple default text message.
  
 
 [+1] Articulate your design goals as you start to implement a high-fidelity prototype of your interactive system.
@@ -84,23 +86,31 @@ Additionally, a content creator emphasized that while they track trends and audi
 
 [+1] Provide a plan for implementation. Create a timeline. Suggestion: Work backwards from the March 4 pilot deadline. 
 
- 
+- Feb 25: Come up with a json format that the LLM outputs and the web app reads to present to user
+
+- Feb 27: Start working on tuning LLM and building web application
+
+- March 3: Finish a rough web app design that reflect the functionality in the paper prototype (Baseline: presents suggestions); Use prompt engineering to make the LLM accurately and consistently outputs in desired format (Baseline: output suggestion only)
+
+- March 4 pilot
 
 What did each member contribute to this phase of the project?
 
- 
+Ruichen: Designed Paper Prototype, engage in class prototype testing
+Zihan: Designed Paper Prototype, engage in class prototype testing
+Weihan: Designed Paper Prototype, engage in class prototype testing
 
 Did you use a generative AI tool? If so, which and how?
-
- 
+None
 
 How much time did you spend on this assignment
 
 - as a group?
-
+4hrs
 - individually?
-
- 
+Ruichen: 3hrs
+Zihan: 3hrs
+Weihan: 3hrs
 
 [+1] Depth: Conduct an additional two cognitive walkthroughs with potential users (+0.5 per session)
 
