@@ -18,7 +18,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/check_script", {
+      const response = await axios.post("http://127.0.0.1:8001/check_script", {
         script,
         user_prompt: userPrompt || null,  // Send null if empty
       });
