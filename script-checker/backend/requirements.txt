@@ -1,0 +1,17 @@
+fastapi
+langchain
+openai
+pandas
+flask
+python-dotenv
+langchain_community
+uvicorn
+redis
+rq
+python-multipart
+rapidfuzz
+uuid
+celery
+reportlab
+fpdf
+asyncio
