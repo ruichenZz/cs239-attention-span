@@ -19,11 +19,12 @@ async def analyze_script(script: str, user_prompt: str = None):
         "Analyze the following script for clarity, engagement, and emotional impact. "
         "Provide actionable feedback on structure, flow, and potential improvements."
         "for example, the suggestion can be: ... this part is too information densed, audience might feel overwhelmed, so could add story or image to demonstrate what just been discussed."
+        "In addition, here's more user input prompts you should consider: "
     )
 
     # Use the user-provided prompt if available, otherwise fallback to the default one
-    final_prompt = user_prompt if user_prompt else built_in_prompt
-
+    # final_prompt = user_prompt if user_prompt else built_in_prompt
+    final_prompt = built_in_prompt + user_prompt if user_prompt else built_in_prompt
     # Define the prompt template
     prompt = PromptTemplate(
         input_variables=["script", "prompt"],

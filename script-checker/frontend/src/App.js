@@ -42,7 +42,7 @@ function App() {
         />
 
         <textarea
-          placeholder="Optional: Custom prompt for analysis"
+          placeholder="Optional: Custom prompt for analysis. Default is 'Analyze the following script for clarity, engagement, and emotional impact. Provide actionable feedback on structure, flow, and potential improvements.for example, the suggestion can be: ... this part is too information densed, audience might feel overwhelmed, so could add story or image to demonstrate what just been discussed.'"
           value={userPrompt}
           onChange={(e) => setUserPrompt(e.target.value)}
           className="text-input"
@@ -56,7 +56,7 @@ function App() {
       {error && <p className="error-message">{error}</p>}
 
       {suggestions && (
-        <div className="results-container">
+        <div class="wrap" className="results-container">
           <h2>Suggestions</h2>
           <pre>{suggestions}</pre>
         </div>
