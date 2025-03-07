@@ -20,47 +20,129 @@ function App() {
     try {
       const response = await axios.post("http://127.0.0.1:8001/check_script", {
         script,
-        user_prompt: userPrompt || null,  // Send null if empty
+        user_prompt: userPrompt || null,
       });
-
-      setSuggestions(response.data.suggestions);
+      setSuggestions(response.data);
     } catch (err) {
       setError("Failed to analyze script.");
     }
   };
 
+  const Timeline = ({ data }) => {
+    if (!data?.duration) return null;
+    
+    const totalDuration = data.duration.reduce((sum, curr) => sum + curr, 0);
+    const categoryColors = {
+      informational: "#3b82f6",
+      comedic: "#f59e0b",
+      storytelling: "#10b981",
+      visual_presentation: "#8b5cf6",
+      default: "#e5e7eb"
+    };
+
+    return (
+      <div className="timeline-container">
+        <div className="timeline">
+          {data.duration.map((duration, index) => {
+            let category = 'default';
+            if (data.comedic.includes(index)) category = 'comedic';
+            if (data.information.includes(index)) category = 'informational';
+            if (data.storytelling.includes(index)) category = 'storytelling';
+            if (data.visual_presentation.includes(index)) category = 'visual_presentation';
+
+            return (
+              <div
+                key={index}
+                className="timeline-segment"
+                style={{
+                  width: `${(duration / totalDuration) * 100}%`,
+                  backgroundColor: categoryColors[category]
+                }}
+                title={`Paragraph ${index + 1}: ${category}`}
+              />
+            );
+          })}
+        </div>
+        <div className="timeline-legend">
+          {Object.entries(categoryColors).map(([category, color]) => (
+            category !== 'default' && (
+              <div key={category} className="legend-item">
+                <div className="legend-color" style={{ backgroundColor: color }} />
+                <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+              </div>
+            )
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="app-container">
       <h1>Script Checker</h1>
-
+      
       <div className="main-content">
-        <textarea
-          placeholder="Enter your script here..."
-          value={script}
-          onChange={(e) => setScript(e.target.value)}
-          className="text-input"
-        />
-
-        <textarea
-          placeholder="Optional: Custom prompt for analysis. Default is 'Analyze the following script for clarity, engagement, and emotional impact. Provide actionable feedback on structure, flow, and potential improvements.for example, the suggestion can be: ... this part is too information densed, audience might feel overwhelmed, so could add story or image to demonstrate what just been discussed.'"
-          value={userPrompt}
-          onChange={(e) => setUserPrompt(e.target.value)}
-          className="text-input"
-        />
-      </div>
-
-      <button onClick={handleSubmit} className="action-button">
-        Check Script
-      </button>
-
-      {error && <p className="error-message">{error}</p>}
-
-      {suggestions && (
-        <div class="wrap" className="results-container">
-          <h2>Suggestions</h2>
-          <pre>{suggestions}</pre>
+        <div className="editor-container">
+          <textarea
+            placeholder="Enter your script here..."
+            value={script}
+            onChange={(e) => setScript(e.target.value)}
+            className="text-input"
+          />
         </div>
-      )}
+
+        <div className="sidebar">
+          <div className="prompt-section">
+            <textarea
+              placeholder="Optional: Custom prompt for analysis..."
+              value={userPrompt}
+              onChange={(e) => setUserPrompt(e.target.value)}
+              className="text-input prompt-input"
+            />
+          </div>
+          
+          <div className="results-container">
+            <button onClick={handleSubmit} className="action-button">
+              Check Script
+            </button>
+
+            {error && <p className="error-message">{error}</p>}
+
+            {suggestions && (
+              <>
+                <Timeline data={suggestions} />
+                
+                <div className="feedback-section">
+                  <h2>Feedback</h2>
+                  <div className="feedback-content">
+                    <p>{suggestions.feedback}</p>
+                    
+                    <div className="category-lists">
+                      <h3>Segment Analysis</h3>
+                      <div>
+                        <h4>Informational Paragraphs</h4>
+                        <p>{suggestions.information.join(", ") || "None"}</p>
+                      </div>
+                      <div>
+                        <h4>Comedic Paragraphs</h4>
+                        <p>{suggestions.comedic.join(", ") || "None"}</p>
+                      </div>
+                      <div>
+                        <h4>Storytelling Paragraphs</h4>
+                        <p>{suggestions.storytelling.join(", ") || "None"}</p>
+                      </div>
+                      <div>
+                        <h4>Visual Presentation Paragraphs</h4>
+                        <p>{suggestions.visual_presentation.join(", ") || "None"}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

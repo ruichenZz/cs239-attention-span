@@ -2,7 +2,8 @@ import os
 import logging
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from langchain_utils import analyze_script
+# from langchain_utils import analyze_script
+from dspy_utils import analyze_script
 from pydantic import BaseModel
 from typing import Optional
 from dotenv import load_dotenv
@@ -35,7 +36,8 @@ async def check_script(request: ScriptRequest):
         user_prompt = request.user_prompt if request.user_prompt and request.user_prompt.strip() else None
 
         suggestions = await analyze_script(request.script, user_prompt)
-        return {"suggestions": suggestions}
+        return suggestions
+        # return {"suggestions": suggestions}
     except Exception as e:
         logging.error(f"Error processing script: {str(e)}")
         raise HTTPException(status_code=500, detail="Error while processing script.")

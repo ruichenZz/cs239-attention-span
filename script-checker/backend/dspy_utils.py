@@ -106,8 +106,8 @@ def main():
 
 async def analyze_script(script: str, user_prompt: str = None):
     program = dspy.Predict(script_checker)
-    script = script_parser(SAMPLE_SCRIPT)
-    user_prompt = "Analyze the following script for clarity, engagement, and emotional impact. Provide actionable feedback on structure, flow, and potential improvements."
+    script = script_parser(script)
+    user_prompt = user_prompt
     example = dspy.Example(script=script, goals=user_prompt if user_prompt else "").with_inputs("script", "goals")
     response = program(**example.inputs())
     return {"feedback": response.feedback, "information": response.information, "comedic": response.comedic, "storytelling": response.storytelling, "visual_presentation": response.visual_presentation, "duration": response.duration}
