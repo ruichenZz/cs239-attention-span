@@ -2,64 +2,100 @@
 
 [+0.5] Present the pilot user with a brief statement of the scenario and task. Ask the pilot user to complete the task. Note: You might feel (very) nervous that something will break. That is OK. It's ok for the pilot user to break things as they test out your system. Be prepared to restart/recover your system when things break. Note what happened step by step. Include 0.5-1p of notes on one pilot user. Additionally, summarize in a few sentences: What happened? Why? What changes do you need to make to your system before the next pilot?
 
-Pilot User Session Notes 
-User Action – Script Without Goals:
-The pilot user copied and pasted a script into the main text area but did not provide any goals.
-When they clicked "Check Script," the platform did not respond.
-We discovered the underlying issue: the system required a goals input before proceeding with analysis. Since the user prompt was null, it caused a failure in the prompt construction.
-Immediate Fix Attempt:
-We modified the backend logic to allow a default set of goals if none were provided. This involved merging the user’s custom goals with our built-in prompt.
-We reloaded the system and asked the user to try again.
-User Action – Entering Goals:
-The pilot user then re-ran the script with newly typed goals.
-The suggestions generated, but the system used only the user’s goals, without incorporating the pre-defined goals we had intended to keep.
-This required another quick fix on our end: we had to ensure that the built-in prompt and user prompt would be concatenated rather than replaced.
-Formatting Issue:
-After generating suggestions, the text displayed incorrectly: the suggestions overflowed outside the bounding box in the interface.
-The pilot user remarked that the styling looked broken and that the entire interface layout seemed to shift.
-User Feedback:
-The pilot user felt our system was “basically GPT with an extra step” and did not see the clear difference in its specialized approach.
-They suggested we highlight how the system’s segmentation and timeline differ from a generic LLM response.
-Overall Observations:
-The user unintentionally discovered two input-handling bugs (missing default goals and non-merged prompt).
-Our quick fixes addressed both issues, but we still faced UI rendering problems (the overflow text).
-The pilot user expressed doubt about the system’s unique value proposition, indicating we must better illustrate how the script classification (informational, comedic, etc.) is distinct from a standard GPT-based chat.
-Summary
-What Happened?
-The pilot user first entered a script with no goals, causing the platform to fail silently. After a fix, they entered goals, but we inadvertently lost the built-in prompt. We fixed that too. Then the interface displayed suggestions outside the container, and the user felt the system’s functionality was too similar to GPT.
-Why Did It Happen?
-The system’s prompt management logic assumed a goals input would always be present. Merging the default prompt with the user’s custom input was also not implemented initially. Additionally, the styling for suggestions had not been tested under a longer text output scenario.
-Changes Needed Before the Next Pilot
-Ensure that if a user does not supply goals, the system still includes an internal default.
-Always concatenate the user’s goals with our built-in instructions.
-Update the CSS to handle longer text or unexpected content size so suggestions never overflow.
-Emphasize the unique analytics, classification, and timeline features to show how our system differs from a generic LLM-based chatbot.
+# Pilot User Session Notes
+
+## User Action – Script Without Goals
+- The pilot user copied and pasted a script into the main text area but did not provide any goals.
+- When they clicked **Check Script**, the platform did not respond.
+- **Issue discovered**: The system required goals before proceeding with analysis. The user’s null prompt caused a failure in prompt construction.
+
+### Immediate Fix Attempt
+- We modified the backend logic to allow a default set of goals if none were provided.
+- This involved merging the user’s custom goals with our built-in prompt.
+- After reloading the system, we asked the user to try again.
+
+## User Action – Entering Goals
+- The pilot user then re-ran the script with newly typed goals.
+- The suggestions generated, but the system used **only** the user’s goals, ignoring the pre-defined goals.
+- **New fix**: We ensured that the built-in prompt and user prompt would be concatenated rather than replaced.
+
+## Formatting Issue
+- After generating suggestions, the text displayed incorrectly (overflowing outside the bounding box).
+- The pilot user noted the styling was broken and the interface layout shifted.
+
+## User Feedback
+- The pilot user felt our system was “basically GPT with an extra step” and did not see the clear difference in its specialized approach.
+- They suggested highlighting how the system’s segmentation and timeline differ from a generic LLM response.
+
+## Overall Observations
+- The user discovered two input-handling bugs (missing default goals and non-merged prompt).
+- Our quick fixes addressed both issues, but we still faced UI rendering problems (text overflow).
+- The pilot user expressed doubt about the system’s unique value proposition, indicating we must better illustrate how the script classification (e.g., informational, comedic) is distinct from a standard GPT-based chat.
+
+---
+
+## Summary
+
+### What Happened?
+1. The user first entered a script with no goals, causing the platform to fail silently.
+2. After a fix, they entered goals, but the built-in prompt was lost.
+3. Following another fix, the interface displayed suggestions that overflowed outside the container.
+4. The user felt the system’s functionality was too similar to GPT.
+
+### Why Did It Happen?
+- The system’s prompt management logic assumed goals would always be present.
+- Merging default prompts with user input was not initially implemented.
+- The styling for suggestions had not been tested for long text outputs.
+
+### Changes Needed Before the Next Pilot
+1. **Default Goals**: Ensure that if a user does not supply goals, the system still includes an internal default.
+2. **Prompt Concatenation**: Always concatenate the user’s goals with our built-in instructions.
+3. **CSS Improvements**: Update the CSS to handle longer text or unexpected content sizes so suggestions do not overflow.
+4. **Highlight Uniqueness**: Emphasize the system’s analytics, classification, and timeline features to distinguish it from a generic GPT-based chatbot.
 
 [+0.5] Involve another pilot user outside of the course. Include 0.5-1p of notes on this second pilot user. Summarize in a few sentences: What happened? Why? What changes do you need to make to your system before the next pilot?
 
-Another Pilot User Session Notes 
-Uploading the Script
-The user initially attempted to drag and drop the text file into the interface, which our system did not support. They were confused by the lack of any upload indicator. Eventually, they copied and pasted the contents into the text box successfully.
-Parsing and Classification
-The user’s script contained brief comedic lines within larger, informational paragraphs. Although comedic phrases were present (“We might as well start a comedy club next door!”), the system incorrectly classified those paragraphs purely as “informational.” The comedic tags never triggered because our classifier expected more overt comedic patterns.
-User Feedback
-After clicking “Check Script,” the user said the comedic lines were “completely lost in the system’s analysis.” They expected to see “comedic” flags or color highlights for each joke. They also noticed the comedic lines were never shown in a separate comedic category, even though they were distinctly phrased.
-Observations
+# Another Pilot User Session Notes
 
+## Uploading the Script
+- The user attempted to drag and drop a text file into the interface, which our system does **not** support.
+- They were confused by the lack of any upload indicator.
+- Eventually, they copied and pasted the contents into the text box successfully.
 
-We realized our comedic detection logic is too rigid—it likely requires entire paragraphs to be comedic. Subtle humor or short quips within otherwise “informational” paragraphs went unrecognized. This caused the user to doubt the system’s ability to provide nuanced feedback on tone or style.
-Additionally, the user felt the interface should support direct file uploads or clearly warn users that drag-and-drop is not available.
-Summary
-What Happened?
-The user tried to upload a text file by drag-and-drop (unsupported by the system), then pasted their script. They included comedic lines within otherwise “informational” paragraphs. The system classified all paragraphs purely as informational because our comedic detection logic did not catch subtle humor.
-Why Did It Happen?
-We never built an upload feature and provided no prominent instructions that only copy-paste is supported. Also, our comedic classification currently applies only to paragraphs that are predominantly comedic, leading to missed tags for partial comedic lines.
-Changes Needed Before the Next Pilot
-Either implement basic file upload or explicitly guide the user that only copy-paste is supported.
-Update the classifier to account for partial comedic lines within informational text. This might involve more granular analysis of sentence-level humor cues.
-Provide direct messaging or tooltips if a user tries to drag and drop. This will clarify acceptable formats and reduce confusion for future testers.
+## Parsing and Classification
+- The user’s script contained short comedic lines within larger, informational paragraphs.
+- Although comedic phrases were present (“We might as well start a comedy club next door!”), the system classified those paragraphs purely as **informational**.
+- The comedic tags never triggered because our classifier expects more overt comedic patterns in an entire paragraph.
 
+## User Feedback
+- After clicking **Check Script**, the user noted the comedic lines were “completely lost in the system’s analysis.”
+- They expected to see **comedic** flags or highlights for each joke.
+- The comedic lines never appeared in a separate comedic category, despite being distinctly phrased.
 
+---
+
+## Observations
+- Our comedic detection logic is too rigid—it requires entire paragraphs to be comedic. Subtle or short comedic lines within larger informational paragraphs are missed.
+- This caused the user to doubt the system’s ability to provide nuanced feedback on tone or style.
+- The user also felt the interface should either support direct file uploads or clearly warn that drag-and-drop is **not** available.
+
+---
+
+## Summary
+
+### What Happened?
+1. The user tried to upload a text file by drag-and-drop (unsupported), then pasted the script.
+2. They included comedic lines within otherwise informational paragraphs.
+3. The system classified those paragraphs purely as **informational** because our comedic detection logic missed the subtle humor.
+
+### Why Did It Happen?
+- We have no file-upload feature, and there were no clear instructions that only copy-paste is supported.
+- Our comedic classification logic applies only to paragraphs that are predominantly comedic, causing short humorous lines to go unrecognized.
+
+### Changes Needed Before the Next Pilot
+1. **File Upload Support**: Implement a basic file-upload mechanism or explicitly instruct users that only copy-paste is supported.
+2. **Refine Classifier**: Enhance the classifier to detect partial comedic lines within paragraphs, potentially through sentence-level humor detection.
+3. **User Guidance**: Provide tooltips or messages for drag-and-drop attempts, clarifying the accepted input methods.
 
 ### Before conducting an evaluation [+3]
 
