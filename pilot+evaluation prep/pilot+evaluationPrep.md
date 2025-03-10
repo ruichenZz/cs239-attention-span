@@ -110,6 +110,19 @@ Consent Process:
 
 [+1] Write out a step-by-step protocol for conducting each user evaluation. Getting on the same page is important for more easily conducting studies and analyzing data across participants. Your protocol should include: (1) a script of what you will say to each participant; (2) what behaviors/responses you expect from participants and how that may change the flow of the study, if at all; and (3) how you will transition between phases of the study (e.g., from a task to an interview). 
 
+(1) Script: Thank you for participating. Today we are testing a system for content creators that analyzes scripts to improve engagement and user attention. Feel free to explore and click everything that looks clickable or interesting. Ask us any questions if anything comes up. If it breaks, don't worry, your experience will help us improve our system. Please have fun, write some script, play with our tools. You can stop at anytime.
+
+(2) Behaviors/response: 
+- Participants input a provided or self-written script.
+- System provides immediate feedback and timeline visualization.
+- Participants interact with feedback and timeline.
+- The flow might change if the participant fails to understand how to use a certain function
+
+(3) how you will transition between phases of the study
+- Researcher asks: "Please review the feedback. Does it clearly guide your improvements? Does the timeline visualization reflect your script accurately?"
+- After exploration, transition smoothly: "Now I'd like to ask a few quick questions to understand your experience better."
+- Possible questions: How clear and actionable did you find the feedback provided? How well did the timeline reflect your script’s content and pacing? Any suggestions for improving the visualizations or feedback?
+
 ### For fun [+0.5]
 [+0.5] Name your system!
 ScriptPulse
@@ -127,3 +140,5 @@ How much time did you spend on this assignment
 
 - individually?
 - Zihan: 6 hr
+- Ruichen: 5 hr
+- Weihan: 5 hr
