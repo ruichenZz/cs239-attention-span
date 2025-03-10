@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./index.css";
+import HighlightedScript from "./HighlightedScript";
 
 function App() {
   const [script, setScript] = useState("");
   const [userPrompt, setUserPrompt] = useState("");
   const [suggestions, setSuggestions] = useState(null);
   const [error, setError] = useState("");
+
+  // Track whether we're in read-only (highlighted) mode or editing mode
+  const [isReadOnly, setIsReadOnly] = useState(false);
 
   const handleSubmit = async () => {
     setError("");
@@ -23,6 +27,9 @@ function App() {
         user_prompt: userPrompt || null,
       });
       setSuggestions(response.data);
+
+      // Automatically switch to read-only (highlight) mode
+      setIsReadOnly(true);
     } catch (err) {
       setError("Failed to analyze script.");
     }
@@ -37,18 +44,18 @@ function App() {
       comedic: "#f59e0b",
       storytelling: "#10b981",
       visual_presentation: "#8b5cf6",
-      default: "#e5e7eb"
+      default: "#e5e7eb",
     };
 
     return (
       <div className="timeline-container">
         <div className="timeline">
           {data.duration.map((duration, index) => {
-            let category = 'default';
-            if (data.comedic.includes(index)) category = 'comedic';
-            if (data.information.includes(index)) category = 'informational';
-            if (data.storytelling.includes(index)) category = 'storytelling';
-            if (data.visual_presentation.includes(index)) category = 'visual_presentation';
+            let category = "default";
+            if (data.information.includes(index)) category = "informational";
+            if (data.comedic.includes(index)) category = "comedic";
+            if (data.storytelling.includes(index)) category = "storytelling";
+            if (data.visual_presentation.includes(index)) category = "visual_presentation";
 
             return (
               <div
@@ -56,7 +63,7 @@ function App() {
                 className="timeline-segment"
                 style={{
                   width: `${(duration / totalDuration) * 100}%`,
-                  backgroundColor: categoryColors[category]
+                  backgroundColor: categoryColors[category],
                 }}
                 title={`Paragraph ${index + 1}: ${category}`}
               />
@@ -64,14 +71,14 @@ function App() {
           })}
         </div>
         <div className="timeline-legend">
-          {Object.entries(categoryColors).map(([category, color]) => (
-            category !== 'default' && (
+          {Object.entries(categoryColors).map(([category, color]) =>
+            category !== "default" && (
               <div key={category} className="legend-item">
                 <div className="legend-color" style={{ backgroundColor: color }} />
                 <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
               </div>
             )
-          ))}
+          )}
         </div>
       </div>
     );
@@ -83,12 +90,45 @@ function App() {
       
       <div className="main-content">
         <div className="editor-container">
-          <textarea
-            placeholder="Enter your script here..."
-            value={script}
-            onChange={(e) => setScript(e.target.value)}
-            className="text-input"
-          />
+          {isReadOnly ? (
+            // ---------------------
+            // READ-ONLY (highlighted) mode
+            // ---------------------
+            <div style={{ marginBottom: "16px" }}>
+              {suggestions ? (
+                <HighlightedScript script={script} suggestions={suggestions} />
+              ) : (
+                <div
+                  style={{
+                    backgroundColor: "#e5e7eb",
+                    padding: "8px",
+                    borderRadius: "4px"
+                  }}
+                >
+                  {script}
+                </div>
+              )}
+
+              <button
+                onClick={() => setIsReadOnly(false)}
+                className="edit-button"
+              >
+                Edit
+              </button>
+            </div>
+          ) : (
+            // ---------------------
+            // EDIT mode (textarea)
+            // ---------------------
+            <div>
+              <textarea
+                placeholder="Enter your script here..."
+                value={script}
+                onChange={(e) => setScript(e.target.value)}
+                className="text-input"
+              />
+            </div>
+          )}
         </div>
 
         <div className="sidebar">
@@ -111,7 +151,6 @@ function App() {
             {suggestions && (
               <>
                 <Timeline data={suggestions} />
-                
                 <div className="feedback-section">
                   <h2>Feedback</h2>
                   <div className="feedback-content">
