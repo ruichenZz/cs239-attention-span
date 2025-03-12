@@ -81,10 +81,9 @@ h1 {
   display: flex;
 }
 
+
 .timeline-segment {
-  height: 100%;
-  transition: width 0.3s ease;
-  cursor: pointer;
+  border-right: 1px solid #fff;
 }
 
 .timeline-legend {
@@ -144,9 +143,17 @@ h1 {
   margin-bottom: 8px;
 }
 
+.highlighted-script {
+  position: relative;
+}
+
 .highlighted-paragraph {
-  font-size: 16px;
-  line-height: 1.5;
+  position: relative;
+  transition: box-shadow 0.5s;
+}
+
+.highlighted-paragraph:hover {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
 }
 
 .edit-button {

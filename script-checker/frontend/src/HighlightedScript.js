@@ -1,15 +1,13 @@
 import React from "react";
 
 const HighlightedScript = ({ script, suggestions }) => {
-  if (!suggestions) return null; // Don’t render until we have analysis data
-  
-  // 1. Split script into paragraphs the same way we did on the backend
+  if (!suggestions) return null;
+
   const paragraphs = script
-    .split("\n\n") // <-- Split on double newline
+    .split("\n\n")
     .map((p) => p.trim())
     .filter(Boolean);
 
-  // 2. Define category colors (same ones used in Timeline)
   const categoryColors = {
     informational: "#3b82f6",
     comedic: "#f59e0b",
@@ -18,34 +16,45 @@ const HighlightedScript = ({ script, suggestions }) => {
     default: "#e5e7eb",
   };
 
+  const getCategories = (index) => {
+    const categories = [];
+    if (suggestions.information.includes(index)) categories.push("informational");
+    if (suggestions.comedic.includes(index)) categories.push("comedic");
+    if (suggestions.storytelling.includes(index)) categories.push("storytelling");
+    if (suggestions.visual_presentation.includes(index)) categories.push("visual_presentation");
+    return categories;
+  };
+
+  const getGradientBackground = (categories) => {
+    if (categories.length === 0) return categoryColors.default;
+    if (categories.length === 1) return categoryColors[categories[0]];
+    // Gradient transition for two categories
+    const [first, second] = categories;
+    return `linear-gradient(135deg, ${categoryColors[first]} 50%, ${categoryColors[second]} 50%)`;
+  };
+
   return (
     <div className="highlighted-script">
       {paragraphs.map((paragraph, index) => {
-        let category = "default";
-        if (suggestions.information.includes(index)) {
-          category = "informational";
-        } else if (suggestions.comedic.includes(index)) {
-          category = "comedic";
-        } else if (suggestions.storytelling.includes(index)) {
-          category = "storytelling";
-        } else if (suggestions.visual_presentation.includes(index)) {
-          category = "visual_presentation";
-        }
+        const categories = getCategories(index);
+        const background = getGradientBackground(categories);
 
         return (
-          <p
-            key={index}
-            className="highlighted-paragraph"
-            style={{
-              backgroundColor: categoryColors[category],
-              padding: "8px",
-              borderRadius: "4px",
-              marginBottom: "8px",
-              whiteSpace: "pre-wrap", // preserve line breaks
-            }}
-          >
-            {paragraph}
-          </p>
+          <div key={index} style={{ position: "relative", marginBottom: "12px" }}>
+            <p
+              className="highlighted-paragraph"
+              style={{
+                background: background,
+                padding: "8px",
+                borderRadius: "4px",
+                whiteSpace: "pre-wrap",
+                color: "#fff",
+              }}
+              title={categories.join(", ")}
+            >
+              {paragraph}
+            </p>
+          </div>
         );
       })}
     </div>

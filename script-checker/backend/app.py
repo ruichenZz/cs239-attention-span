@@ -36,6 +36,7 @@ async def check_script(request: ScriptRequest):
         user_prompt = request.user_prompt if request.user_prompt and request.user_prompt.strip() else None
 
         suggestions = await analyze_script(request.script, user_prompt)
+        print(suggestions)
         return suggestions
         # return {"suggestions": suggestions}
     except Exception as e:

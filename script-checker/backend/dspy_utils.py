@@ -1,7 +1,9 @@
 import dspy
 import os
 import json
+from dotenv import load_dotenv
 
+load_dotenv("en.env")
 openai_api_key = os.getenv("OPENAI_API_KEY")
 lm = dspy.LM('openai/gpt-4o-mini', api_key=openai_api_key)
 dspy.configure(lm=lm)
@@ -29,52 +31,83 @@ In conclusion, our comprehensive analysis combines strategic insights, engaging 
 
 class script_checker(dspy.Signature):
     """
-    Analyze the given script for clarity, engagement, emotional impact, and pacing for video production.
-    
-    The input script is a list of paragraphs (each paragraph as a separate element). The analysis will produce:
-    
-    - **General Feedback:** Overall suggestions and actionable recommendations to improve the script,s clarity, engagement, and pacing.
-    
-    - **Segment Classification:** Identification of paragraph indices corresponding to specific content categories:
-      - **Informational:** Paragraphs that are dense with technical or factual information.
-        *Example:* "Our research indicates a 40% surge in customer engagement after our last campaign."
-      - **Comedic:** Paragraphs that incorporate humor or light-hearted elements.
-        *Example:* "And then, just when you thought it couldn,t get any worse, our server crashed!"
-      - **Storytelling:** Paragraphs that use narrative techniques or personal anecdotes to emotionally connect with the audience.
-        *Example:* "I still remember the day we turned our biggest challenge into our greatest success..."
-      - **Visual Presentation:** Paragraphs that suggest the inclusion of visual elements like images, charts, or diagrams.
-        *Example:* "Imagine a vibrant infographic that maps out our key performance metrics."
-      
-      For each of these categories, return a list of paragraph indices that match the criteria. Note that these lists may not include every paragraph (if a paragraph does not fit a category, its index is omitted in that specific list).
-    
-    - **Duration Estimation:** A list of estimated durations (in seconds or minutes) for each paragraph, This helps in assessing the pacing of the content.. This list **must** have exactly the same length as the input script. For example, if the input consists of 39 paragraphs, the duration list must contain 39 numeric values—each corresponding to the estimated video duration for its respective paragraph.
-      Since users typically read at a rate of 200-250 words per minute, a 100-word paragraph might last around 30-40 seconds. However this can vary based on the complexity of the content, 
-      and users might not include all the details in the script or in their final videos. Estimate the duration based on the content, word count, and the intended pace of the video.
-    
-    **Usage Example:**
-    
-    Given the following script as a list of paragraphs:
-    
-        [
-            "In today's competitive market, data drives every decision.",
-            "Our research indicates a 40% surge in customer engagement after our last campaign.",
-            "Picture a fun moment when our team unexpectedly celebrated a small victory.",
-            "Visualize a vibrant infographic that maps out our key performance metrics."
-        ]
-    
-    The expected outputs might be:
-      - `feedback`: "Consider integrating visuals to break up dense sections and improve pacing. The humorous tone in paragraph 3 is engaging; ensure it blends well with the overall narrative. Enhance paragraph 4 with detailed visual cues."
-      - `information`: [0, 1]
-      - `comedic`: [2]
-      - `storytelling`: []  (if no clear narrative style is detected)
-      - `visual_presentation`: [3]
-      - `duration`: [5.0, 7.0, 4.0, 6.0]  (A list of 4 duration estimates matching the 4 input paragraphs)
-    
-    **Enforcement Requirement:**
-    
-    - **Duration Field:** The `duration` output must be a list of numeric estimates with a one-to-one correspondence to the input paragraphs. If the input has 39 paragraphs, the `duration` list must contain exactly 39 values.
-    
-    Use this comprehensive analysis to help content creators refine both the content and pacing of their videos.
+    Analyze the provided script to enhance clarity, viewer engagement, emotional impact, and pacing.
+
+    The input script is structured as a list of distinct paragraphs. Your task involves two key components:
+
+    1. **General Feedback**: Provide clear, actionable feedback to improve overall script clarity, structure, pacing, and audience retention.
+       Example: "Paragraph 1 is densely packed with technical details; consider splitting it up or pairing it with visual examples to improve viewer understanding."
+
+    2. **Paragraph Categorization**: Each paragraph must be assigned exactly **one** category from the following (strictly no overlaps):
+
+    - **Informational**:
+      - Paragraphs primarily focused on presenting detailed statistics, technical explanations, data, facts, or educational information.
+      - Example: "Recent analytics data reveals a 30% increase in engagement when visuals are included."
+
+    - **Comedic**:
+      - Paragraphs explicitly designed to introduce humor, levity, or entertainment value.
+      - Example: "Did you hear about the creator who filled his video with pie charts? He ended up with nothing but crumbs."
+
+    - **Storytelling**:
+      - Paragraphs built around narrative elements, personal anecdotes, or emotional stories.
+      - Example: "I still remember the first video I made. It was far from perfect, but that first step taught me invaluable lessons."
+
+    - **Visual Presentation (Explicit Inserts Only)**:
+      - Paragraphs explicitly instructing the insertion of specific visual elements (images, infographics, charts, video clips).
+      - Must contain a clear, explicit instruction like "[Insert a bar chart comparing last year's and this year's sales figures here]."
+      - Example: "[Insert an infographic clearly illustrating viewer retention rates over the past quarter]."
+
+    - **Neutral**:
+      - Paragraphs that serve as introductions, transitions, or conclusions without clearly fitting into other categories.
+      - Welcome to today's video! ...... So, let's jump in!
+
+    3. **Duration Estimations**: Provide an estimated duration (in seconds) for each paragraph. The length of the durations list must exactly match the input length.
+
+    ### Important Rules:
+    - Each paragraph can belong to exactly **one** category—no exceptions or overlaps.
+    - Only explicitly indicated visual insertions qualify as "Visual Presentation."
+
+    ### Complete Example:
+
+    **Sample Input Script:**
+    [
+        "Welcome to today's analysis video. We'll uncover ways to boost viewer retention.",
+        "[Insert a clear infographic showing audience retention drop-off rates.]",
+        "My first video was a disaster; I lost my viewers in seconds—but that taught me a powerful lesson.",
+        "Analytics clearly indicate that visual elements significantly improve retention.",
+        "Here's a funny fact: more viewers watch cat videos than professional tutorials.",
+        "To summarize, blend storytelling, clear information, visuals, and humor for best results."
+    ]
+
+    **Correct Output Example:**
+    - feedback: "Consider pairing paragraph 4’s dense information with visual aids. Paragraph 2 clearly defines the visual element; ensure its quality. The humorous approach in paragraph 5 effectively adds variety."
+    - information: [3]
+    - comedic: [4]
+    - storytelling: [2]
+    - visual_presentation: [1]
+    - neutral: [0, 5]
+    - duration: [5.0, 7.0, 8.0, 7.5, 5.0, 6.0]
+
+    ### Additional Example for Clarification:
+
+    **Sample Input Script:**
+    [
+        "Did you know adding visuals can boost engagement by up to 50%?",
+        "[Insert a bar graph comparing engagement with and without visuals.]",
+        "One day, I experimented by removing visuals from my videos, and viewer engagement plummeted dramatically.",
+        "Balancing information and storytelling keeps your audience captivated until the end."
+    ]
+
+    **Correct Output Example:**
+    - feedback: "Paragraph 1 contains good data; pair it closely with the explicit visual mentioned in paragraph 2. Paragraph 3’s storytelling effectively illustrates a key point."
+    - information: [0]
+    - comedic: []
+    - storytelling: [2]
+    - visual_presentation: [1]
+    - neutral: [3]
+    - duration: [6.5, 5.0, 7.5, 6.0]
+
+    Follow these explicit guidelines strictly, ensuring exactly one category per paragraph without overlap, accurate categorization according to explicit instructions, and precise duration estimation matching the input length.
     """
     script: list[str] = dspy.InputField(desc="The script to analyze, with each paragraph as a separate element.")
     goals: str = dspy.InputField(desc="The desired outcomes or engagement goals for the script.")

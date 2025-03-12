@@ -37,8 +37,9 @@ function App() {
 
   const Timeline = ({ data }) => {
     if (!data?.duration) return null;
-    
+  
     const totalDuration = data.duration.reduce((sum, curr) => sum + curr, 0);
+  
     const categoryColors = {
       informational: "#3b82f6",
       comedic: "#f59e0b",
@@ -46,47 +47,65 @@ function App() {
       visual_presentation: "#8b5cf6",
       default: "#e5e7eb",
     };
-
+  
+    const getCategories = (index) => {
+      const categories = [];
+      if (data.information.includes(index)) categories.push("informational");
+      if (data.comedic.includes(index)) categories.push("comedic");
+      if (data.storytelling.includes(index)) categories.push("storytelling");
+      if (data.visual_presentation.includes(index)) categories.push("visual_presentation");
+      return categories;
+    };
+  
     return (
       <div className="timeline-container">
         <div className="timeline">
           {data.duration.map((duration, index) => {
-            let category = "default";
-            if (data.information.includes(index)) category = "informational";
-            if (data.comedic.includes(index)) category = "comedic";
-            if (data.storytelling.includes(index)) category = "storytelling";
-            if (data.visual_presentation.includes(index)) category = "visual_presentation";
-
+            const categories = getCategories(index);
+            const widthPercent = (duration / totalDuration) * 100;
+  
+            const backgroundStyle =
+              categories.length === 0
+                ? categoryColors.default
+                : categories.length === 1
+                ? categoryColors[categories[0]]
+                : `repeating-linear-gradient(
+                    45deg,
+                    ${categories.map((cat, idx) => `${categoryColors[cat]} ${idx * 10}px, ${categoryColors[cat]} ${(idx + 1) * 10}px`).join(", ")}
+                  )`;
+  
             return (
               <div
                 key={index}
                 className="timeline-segment"
                 style={{
-                  width: `${(duration / totalDuration) * 100}%`,
-                  backgroundColor: categoryColors[category],
+                  width: `${widthPercent}%`,
+                  background: backgroundStyle,
                 }}
-                title={`Paragraph ${index + 1}: ${category}`}
+                title={`Paragraph ${index + 1}: ${categories.join(", ") || "default"}`}
               />
             );
           })}
         </div>
         <div className="timeline-legend">
-          {Object.entries(categoryColors).map(([category, color]) =>
-            category !== "default" && (
-              <div key={category} className="legend-item">
-                <div className="legend-color" style={{ backgroundColor: color }} />
-                <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
-              </div>
-            )
+          {Object.entries(categoryColors).map(
+            ([category, color]) =>
+              category !== "default" && (
+                <div key={category} className="legend-item">
+                  <div className="legend-color" style={{ backgroundColor: color }} />
+                  <span>{category.charAt(0).toUpperCase() + category.slice(1)}</span>
+                </div>
+              )
           )}
         </div>
       </div>
     );
   };
+  
 
   return (
     <div className="app-container">
-      <h1>Script Checker</h1>
+      <h1>ScriptPulse</h1>
       
       <div className="main-content">
         <div className="editor-container">
