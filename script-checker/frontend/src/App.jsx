@@ -1,5 +1,4 @@
-// export default App;
-import React, { useState } from "react";
+import React, { useState, useCallback, useRef } from "react";
 import axios from "axios";
 
 // Material UI imports
@@ -11,10 +10,14 @@ import {
   TextField,
   Typography,
   Paper,
+  ToggleButton,
+  ToggleButtonGroup,
+  IconButton
 } from "@mui/material";
 
 import HighlightedScript from "./HighlightedScript";
-import Timeline from "./Timeline"; // We'll separate Timeline into its own component for clarity
+import Timeline from "./Timeline";
+import uploadImageIcon from "./assets/uploadIcon.png";
 
 function App() {
   const [script, setScript] = useState("");
@@ -23,12 +26,81 @@ function App() {
   const [error, setError] = useState("");
   const [isReadOnly, setIsReadOnly] = useState(false);
 
+  // --- Version Control State ---
+  const [versions, setVersions] = useState([]);  // Array of version objects
+  const [showVersions, setShowVersions] = useState(false); // Toggle for version history panel
+
+  // Track mode of entry: "manual" or "upload"
+  const [mode, setMode] = useState("manual");
+
+  // Ref to track cursor position in the multiline TextField
+  const textFieldRef = useRef(null);
+
+  const handleModeChange = (event, newMode) => {
+    if (newMode !== null) {
+      setMode(newMode);
+    }
+  };
+
+  // --- DRAG & DROP LOGIC FOR TEXT FILES ---
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = useCallback(
+    (e) => {
+      e.preventDefault();
+      const file = e.dataTransfer.files?.[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          setScript(event.target.result);
+        };
+        reader.readAsText(file);
+      }
+    },
+    [setScript]
+  );
+
+  // --- FILE UPLOAD FOR TEXT FILES ---
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setScript(event.target.result);
+      };
+      reader.readAsText(file);
+    }
+  };
+
+  // --- IMAGE UPLOAD FOR INSERTING INTO SCRIPT ---
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const textArea = textFieldRef.current; 
+    if (!textArea) return;
+
+    const startPos = textArea.selectionStart;
+    const endPos = textArea.selectionEnd;
+
+    // Insert "[image inserted]" placeholder at the cursor position
+    const newText =
+      script.substring(0, startPos) +
+      "\n[image inserted]\n" +
+      script.substring(endPos);
+
+    setScript(newText);
+  };
+
+  // --- Analysis Submit ---
   const handleSubmit = async () => {
     setError("");
     setSuggestions(null);
 
     if (!script.trim()) {
-      setError("Please enter a script.");
+      setError("Please enter or upload a script.");
       return;
     }
 
@@ -44,6 +116,30 @@ function App() {
     }
   };
 
+  // --- Version Control Handlers ---
+  const handleSaveVersion = () => {
+    // Create a version snapshot
+    const newVersion = {
+      id: Date.now(),  // unique numeric ID
+      timestamp: new Date().toLocaleString(), // human-readable date/time
+      script,
+      userPrompt
+      // If you want to store suggestions too, add them here:
+      // suggestions
+    };
+
+    setVersions((prev) => [newVersion, ...prev]); // Prepend the new version
+  };
+
+  const handleLoadVersion = (version) => {
+    // Revert the main state fields to the version's data
+    setScript(version.script);
+    setUserPrompt(version.userPrompt);
+    // Optionally reset suggestions or keep them
+    setSuggestions(null);
+    setIsReadOnly(false);
+  };
+
   return (
     <Container maxWidth="lg" sx={{ py: 3 }}>
       <Typography variant="h3" align="center" gutterBottom>
@@ -54,7 +150,23 @@ function App() {
         {/* Left side: Script Editor or Highlighted View */}
         <Grid item xs={12} md={8} sx={{ display: "flex", flexDirection: "column" }}>
           <Paper sx={{ p: 2, flex: 1, overflow: "auto" }}>
+            {/* Mode Toggle (Manual vs. File Upload) only shown when not in read-only mode */}
+            {!isReadOnly && (
+              <ToggleButtonGroup
+                value={mode}
+                exclusive
+                onChange={handleModeChange}
+                sx={{ mb: 2 }}
+              >
+                <ToggleButton value="manual">Manual</ToggleButton>
+                <ToggleButton value="upload">File Upload</ToggleButton>
+              </ToggleButtonGroup>
+            )}
+
             {isReadOnly ? (
+              // ---------------------
+              // READ-ONLY (highlighted) mode
+              // ---------------------
               <>
                 {suggestions ? (
                   <HighlightedScript script={script} suggestions={suggestions} />
@@ -73,27 +185,112 @@ function App() {
                 <Button
                   variant="contained"
                   onClick={() => setIsReadOnly(false)}
-                  sx={{ mt: 2 }}
+                  sx={{ mt: 2, mr: 1 }}
                 >
                   Edit
                 </Button>
+                {/* You might let users save a version after analyzing */}
+                <Button variant="outlined" sx={{ mt: 2 }} onClick={handleSaveVersion}>
+                  Save Version
+                </Button>
+              </>
+            ) : mode === "manual" ? (
+              // ---------------------
+              // MANUAL MODE
+              // ---------------------
+              <>
+                <TextField
+                  label="Enter your script here"
+                  multiline
+                  minRows={15}
+                  value={script}
+                  onChange={(e) => setScript(e.target.value)}
+                  variant="outlined"
+                  fullWidth
+                  inputRef={textFieldRef}
+                />
+
+                <Box sx={{ mt: 2 }}>
+                  {/* Insert Image Button */}
+                  <IconButton
+                    component="label"
+                    sx={{
+                      border: "1px solid #ccc",
+                      borderRadius: 1,
+                      p: 1,
+                      mr: 2
+                    }}
+                    title="Insert image"
+                  >
+                    <Box
+                      component="img"
+                      src={uploadImageIcon}
+                      alt="Upload Icon"
+                      sx={{ width: 46, height: 36 }}
+                    />
+                    <input
+                      type="file"
+                      accept="image/*"
+                      hidden
+                      onChange={handleImageUpload}
+                    />
+                  </IconButton>
+
+                  {/* Save Version Button (for manual mode) */}
+                  <Button variant="outlined" onClick={handleSaveVersion}>
+                    Save Version
+                  </Button>
+                </Box>
               </>
             ) : (
-              <TextField
-                label="Enter your script here"
-                multiline
-                minRows={15}
-                value={script}
-                onChange={(e) => setScript(e.target.value)}
-                variant="outlined"
-                fullWidth
-              />
+              // ---------------------
+              // FILE UPLOAD MODE
+              // ---------------------
+              <Box
+                sx={{
+                  border: "2px dashed #ccc",
+                  borderRadius: 2,
+                  p: 2,
+                  textAlign: "center",
+                  color: "#999",
+                }}
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+              >
+                <Typography variant="body1" sx={{ mb: 1 }}>
+                  Drag &amp; drop your file here
+                </Typography>
+                <Typography variant="body2" sx={{ mb: 2 }}>
+                  or
+                </Typography>
+                <Button variant="contained" component="label">
+                  Browse File
+                  <input
+                    type="file"
+                    accept=".txt,.md,.docx,.json"
+                    hidden
+                    onChange={handleFileChange}
+                  />
+                </Button>
+                {script && (
+                  <Box sx={{ mt: 2 }}>
+                    <Typography variant="subtitle2">
+                      <strong>Preview:</strong>
+                    </Typography>
+                    <Paper sx={{ maxHeight: 200, overflow: "auto", p: 1 }}>
+                      <Typography variant="body2" whiteSpace="pre-wrap">
+                        {script}
+                      </Typography>
+                    </Paper>
+                  </Box>
+                )}
+              </Box>
             )}
           </Paper>
         </Grid>
 
         {/* Right side: Prompt + Results */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} sx={{ display: "flex", flexDirection: "column" }}>
           <Paper sx={{ p: 2, mb: 2 }}>
             <TextField
               label="Optional: Custom prompt"
@@ -113,10 +310,20 @@ function App() {
                 {error}
               </Typography>
             )}
+
+            {/* Version History Toggle */}
+            <Button
+              variant="text"
+              fullWidth
+              sx={{ mt: 2 }}
+              onClick={() => setShowVersions((prev) => !prev)}
+            >
+              {showVersions ? "Hide Version History" : "Show Version History"}
+            </Button>
           </Paper>
 
           {suggestions && (
-            <Paper sx={{ p: 2, overflowY: "auto", height: "calc(100% - 120px)" }}>
+            <Paper sx={{ p: 2, overflowY: "auto", flex: 1, mb: 2 }}>
               <Timeline data={suggestions} />
 
               <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
@@ -147,6 +354,45 @@ function App() {
                   {suggestions.visual_presentation.join(", ") || "None"}
                 </Typography>
               </Box>
+            </Paper>
+          )}
+
+          {/* Version History Panel */}
+          {showVersions && (
+            <Paper sx={{ p: 2, overflowY: "auto", maxHeight: "200px" }}>
+              <Typography variant="h6" gutterBottom>
+                Version History
+              </Typography>
+              {versions.length === 0 ? (
+                <Typography variant="body2">No versions saved.</Typography>
+              ) : (
+                versions.map((ver) => (
+                  <Box
+                    key={ver.id}
+                    sx={{
+                      border: "1px solid #ddd",
+                      borderRadius: 1,
+                      p: 1,
+                      mb: 1,
+                    }}
+                  >
+                    <Typography variant="body2">
+                      <strong>Date:</strong> {ver.timestamp}
+                    </Typography>
+                    <Typography variant="body2" noWrap>
+                      <strong>Script Preview:</strong> {ver.script}
+                    </Typography>
+                    <Button
+                      variant="text"
+                      size="small"
+                      sx={{ mt: 1 }}
+                      onClick={() => handleLoadVersion(ver)}
+                    >
+                      Load This Version
+                    </Button>
+                  </Box>
+                ))
+              )}
             </Paper>
           )}
         </Grid>
