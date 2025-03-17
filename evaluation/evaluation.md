@@ -131,7 +131,7 @@ This gave participants the confidence to experiment more with comedic or narrati
 
 By implementing these updates, we aimed to make the system more flexible, user-friendly, and conducive to iterative creative processes—ultimately helping participants better refine their scripts in a single, integrated environment.
 
-# More functions to add in the future
+### More functions to add in the future
 Our user evaluation also highlights some incomplete parts of our system that we didn't have time to improve yet between first and second round. These includes better feedbacks, more emphasis on user-prompt/goals, label each paragraph with numbers, clickable timeline segments etc. We will implement them very soon.
 
 ## After your evaluation [+4]
@@ -231,3 +231,4 @@ How much time did you spend on this assignment as a group? individually?
 
 Zihan Jiang: 6 hr
 Weihan Qu: 5 hr
+Ruichen Zheng: 6 hr
