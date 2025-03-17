@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef } from "react";
 import axios from "axios";
 
-// Material UI imports
 import {
   Box,
   Button,
@@ -27,8 +26,8 @@ function App() {
   const [isReadOnly, setIsReadOnly] = useState(false);
 
   // --- Version Control State ---
-  const [versions, setVersions] = useState([]);  // Array of version objects
-  const [showVersions, setShowVersions] = useState(false); // Toggle for version history panel
+  const [versions, setVersions] = useState([]); 
+  const [showVersions, setShowVersions] = useState(false); 
 
   // Track mode of entry: "manual" or "upload"
   const [mode, setMode] = useState("manual");
@@ -120,22 +119,20 @@ function App() {
   const handleSaveVersion = () => {
     // Create a version snapshot
     const newVersion = {
-      id: Date.now(),  // unique numeric ID
-      timestamp: new Date().toLocaleString(), // human-readable date/time
+      id: Date.now(),
+      timestamp: new Date().toLocaleString(),
       script,
       userPrompt
-      // If you want to store suggestions too, add them here:
-      // suggestions
     };
 
-    setVersions((prev) => [newVersion, ...prev]); // Prepend the new version
+    setVersions((prev) => [newVersion, ...prev]); 
   };
 
   const handleLoadVersion = (version) => {
     // Revert the main state fields to the version's data
     setScript(version.script);
     setUserPrompt(version.userPrompt);
-    // Optionally reset suggestions or keep them
+
     setSuggestions(null);
     setIsReadOnly(false);
   };
