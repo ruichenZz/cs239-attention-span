@@ -38,7 +38,7 @@ class script_checker(dspy.Signature):
     # 1. **General Feedback**: Provide clear, actionable feedback to improve overall script clarity, structure, pacing, and audience retention.
     #    Example: "Paragraph 1 is densely packed with technical details; consider splitting it up or pairing it with visual examples to improve viewer understanding."
 
-    # 2. **Paragraph Categorization**: Each paragraph must be assigned exactly **one** category from the following (strictly no overlaps):
+    # 2. **Paragraph Categorization**: EVERY paragraph must be assigned exactly **one** or **two** category from the following:
 
     # - **Informational**:
     #   - Paragraphs primarily focused on presenting detailed statistics, technical explanations, data, facts, or educational information.
@@ -190,9 +190,14 @@ class script_checker(dspy.Signature):
 
 def script_parser(script):
     """
-    Parse the script into a list of paragraphs. Omit empty lines.
+    Parse the script into a list of paragraphs, ensuring consistent splitting.
+    Removes empty lines and trims whitespace.
     """
-    return [line.strip() for line in script.split("\n\n") if line.strip()]
+    paragraphs = [line.strip() for line in script.split("\n\n") if line.strip()]
+    
+    print(f"DEBUG: Parsed {len(paragraphs)} paragraphs.")  # Debugging
+    return paragraphs
+
 
 def main():
     program = dspy.Predict(script_checker)
@@ -213,6 +218,7 @@ async def analyze_script(script: str, user_prompt: str = None):
     user_prompt = user_prompt
     example = dspy.Example(script=script, goals=user_prompt if user_prompt else "").with_inputs("script", "goals")
     response = program(**example.inputs())
+    print("Categorization results:", response)
     return {"feedback": response.feedback, "information": response.information, "comedic": response.comedic, "storytelling": response.storytelling, "visual_presentation": response.visual_presentation, "duration": response.duration}
 
 if __name__ == "__main__":
