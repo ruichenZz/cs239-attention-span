@@ -53,6 +53,66 @@ Your goal is to assess the usability of your system.
     Participant 10: 
     
 3. [+1] DEPTH: Evaluate with 5 more participants. Feel free to make changes to your system between the first and second round of evaluation. If you do make changes, summarize the changes you made and why.
+   
+Participant 1
+Time in each stage (seconds): 25, 80, 160, 230
+Number of Interactions (visualization-script, suggestion-script): 4, 3
+
+Participant 1 began by exploring the system for about 25 seconds, noting that “the overall interface feels intuitive.” After this, they uploaded a short script file via the new file upload feature to quickly populate the text editor. Throughout the visualization phase (80 seconds), they made 4 switches back and forth between the script and the timeline. This was mainly to identify how much each segment needed expansion or comedic relief. They also inserted two images using the image upload button, which automatically placed [image inserted] placeholders at their cursor positions. They found it “refreshingly simple” and “useful for remembering exactly where visuals should appear.”
+
+In the suggestion stage (160 seconds), Participant 1 engaged with suggestions 3 times. They praised the system for “pointing out logical gaps” in the comedic transitions, finding it easier to fix them before filming. The editing phase (230 seconds) involved continuous toggling between the text and the timeline to confirm that comedic elements were flowing in the correct places. They also created three version snapshots using the new version control feature, allowing them to revert to an earlier version when they felt the script had become too cluttered. Ultimately, they said the versioning helped them iterate more confidently, stating: “I know I can always go back and compare.”
+
+Participant 2
+Time in each stage (seconds): 20, 130, 150, 200
+Number of Interactions (visualization-script, suggestion-script): 6, 6
+
+Participant 2 quickly scanned the interface in about 20 seconds, leaving them plenty of time to experiment with the new features in depth. They dragged and dropped a previously written script (a .txt file), appreciating how the file upload automatically integrated the text. They spent the next 130 seconds in the visualization phase, toggling 6 times to see how comedic bits stacked up against more informational sections. Throughout these toggles, they inserted a single [image inserted] placeholder to remind themselves of a future graphic they plan to include.
+
+During the suggestion stage (150 seconds), they alternated 6 times between reading suggestions and updating the text, noting that suggestions “felt increasingly aligned” with their content. Their editing phase (200 seconds) was driven largely by the version control feature. They committed two versions at pivotal points: one to capture the comedic improvements, another after inserting new transitions. They said the version snapshots “made them feel more adventurous,” since they could roll back if the changes didn’t work out.
+
+Participant 3
+Time in each stage (seconds): 30, 70, 100, 250
+Number of Interactions (visualization-script, suggestion-script): 2, 5
+
+Participant 3 spent 30 seconds reading on-screen instructions to verify the system’s workflow. They opted to type a script manually rather than upload a file, noting that typing helps them organize ideas “on the fly.” During the visualization phase (70 seconds), they only switched twice to double-check comedic emphasis. They explained that they “prefer a big-picture view first” and rely more on suggestions for deeper edits.
+
+They dedicated 100 seconds to studying the suggestions, with 5 interactions between the suggestions panel and the script. Midway, they inserted a placeholder for an image where they planned to display a chart in the final video. Their editing phase (250 seconds) was the longest among the group, where they tested multiple comedic rewrites. They saved one version initially, then realized after some reorganization that they wanted to revert—so they loaded the previous version to retrieve the old comedic structure. They found version control “immediately valuable,” praising how it let them compare comedic flow before and after.
+
+Participant 4
+Time in each stage (seconds): 60, 90, 90, 180
+Number of Interactions (visualization-script, suggestion-script): 10, 2
+
+Participant 4 took a thorough 60-second exploration, testing each icon, including the file upload and image insert features. They tried uploading a small .docx file, but discovered the system displayed some odd formatting. Still, they believed the system was “surprisingly resilient,” as it recovered enough text to work with. In the visualization phase (90 seconds), they switched back and forth 10 times, explaining that they like to “immediately see the structural impact” of every line added or removed.
+
+Although they only had 2 suggestion-script interactions during the 90-second suggestion stage, they still found the suggestions “insightful” for comedic timing. In the editing stage (180 seconds), they also saved two versions—one to mark a halfway point in rewriting, another to finalize comedic segments. Interestingly, they didn’t end up reverting, but said the version control gave them more confidence to experiment: “It’s great for not second-guessing every little edit.”
+
+Participant 5
+Time in each stage (seconds): 10, 120, 180, 190
+Number of Interactions (visualization-script, suggestion-script): 7, 7
+
+Participant 5 jumped in quickly with only 10 seconds of onboarding, mostly ignoring instructions in favor of “figuring it out by clicking around.” They typed part of their script and also uploaded an older snippet to compare how the system’s suggestions differ between older and newer content. The visualization phase (120 seconds) had 7 toggles, emphasizing comedic vs. storytelling transitions.
+
+They spent 180 seconds on suggestions, also toggling 7 times between reading them and applying partial changes. They inserted three [image inserted] placeholders to mark spots for future infographics, praising this feature as “a neat reminder.” The editing phase (190 seconds) saw them save multiple versions after each major comedic revision. They tested rolling back to an earlier version for a comedic draft, finding it “fantastically simple to revert” if the new comedic lines didn’t blend well. By the end, they praised how file upload plus version control “streamlines the iterative script-building process,” making it a strong tool for multi-step content creation.
+
+Summary of Changes Made and Why
+Between our first and second round of evaluations, we introduced several features based on feedback and anticipated user needs:
+
+File Upload & Drag-and-Drop:
+
+We added these to accommodate users who write their scripts in separate editors and want to import them seamlessly.
+Multiple participants noted how this option saved them from manual copy-pasting, improving their overall workflow.
+
+Image Insert Placeholder:
+
+Content creators often want to indicate where visuals should go in the final production. We introduced an “Insert Image” button that places a [image inserted] placeholder at the current cursor position.
+This change helps them keep track of potential illustrations or slides within the script, avoiding confusion later in the editing process.
+
+Version Control:
+
+Users requested an option to revert changes or compare different drafts without manually saving files. We added a simple version history where each snapshot can be saved and reloaded.
+This gave participants the confidence to experiment more with comedic or narrative changes, knowing they could revert if needed.
+
+By implementing these updates, we aimed to make the system more flexible, user-friendly, and conducive to iterative creative processes—ultimately helping participants better refine their scripts in a single, integrated environment.
 
 ## After your evaluation [+4]
 
