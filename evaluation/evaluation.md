@@ -6,13 +6,39 @@ Your goal is to assess the usability of your system.
 
 1. [+5] Evaluate your system with at least 10 participants. Write and submit 0.5-1p of notes for each participant.
     
-    Participant 1: 
+    Participant 1: time in each stage (seconds): 10, 90, 150, 240. Number of Interactions (visualization-script, suggestion-script): 4, 5
+    - Participant 1 grasped the system almost instantly, spending only 10 seconds on initial exploration before starting to engage with the main features. Their approach was balanced, spending a similar amount of time between analyzing the timeline (90 seconds) and reading the suggestions (150 seconds), suggesting that they found both equally important.
+    - They engaged more with the suggestions than the visualization in terms of back-and-forth interactions (5 vs. 4 interactions), indicating that they paid close attention to the suggestions before applying changes. They described the suggestions as highly actionable, providing clear and detailed guidance. Although they did not always follow every suggestion exactly, they still found them valuable for inspiration, helping them rethink their content approach.
+    - Their most notable interaction pattern appeared in the editing stage, where they spent the longest time (240 seconds) refining their script. After making changes, they rechecked the visualization and suggestions to compare the before-and-after versions. They explicitly mentioned feeling a sense of accomplishment when they saw an improvement in structure and engagement levels, reinforcing that the system provides direct, visible benefits in content refinement.
+    - Overall, Participant 1 found the system very helpful, especially the suggestions. They were highly engaged during the editing process, suggesting that the system actively contributed to iterative content improvement rather than just being a passive feedback tool.
+
     
-    Participant 2: 
+    Participant 2: time in each stage (seconds): 30, 120, 180, 180. Number of Interactions (visualization-script, suggestion-script): 8, 3
+    - Participant 2 took a little time to understand how to use the system, spending about 30 seconds in the initial exploration phase before moving on to the main features. During this time, they asked for confirmation about whether the prompt was optional, which indicated that they had understood the system correctly but wanted to double-check the flexibility of its use.
+    - Once they started engaging with the visualization, they frequently switched back and forth between the visualization and the script (8 interactions), suggesting that they found this feature very useful. They commented that the visualization was particularly effective for them because they often only realize during video editing that they need to insert additional content — it's often too late at that point, and they have to either leave it out or compensate with subtitles. They felt that the visualization helped prevent this issue ahead of time, making their workflow more efficient.
+    - Regarding the suggestions, they took their time reading them carefully (180 seconds) and engaged with them at a moderate level (3 interactions). They found the suggestions helpful but pointed out two specific usability issues:
+        - The sidebar for timeline and suggestion should be wider to better display the structure and be more readable alongside the script.
+        - The color difference between the timeline and the paragraph highlights was confusing — the version during this evaluation had different slanting styles for segmentation (/ in the paragraph, \ in the timeline), making it slightly difficult to match them visually, but we changed this UI in future evaluations.
+    - Overall, Participant 2 found the system highly effective and aligned with their needs as a content creator. The main improvements they suggested focused on UI adjustments for better readability and usability rather than fundamental changes to the system's logic.
+
     
-    Participant 3: 
+    Participant 3: time in each stage (seconds): 15, 60, 180, 220. Number of Interactions (visualization-script, suggestion-script): 3, 1
+    - Participant 3 spent relatively little time in each phase compared to others, with fewer interactions overall (only 3 visualization-script switches and 1 suggestion-script switch). This suggests that they used the system in a more straightforward way, rather than engaging deeply with every feature.
+    - They described the system as "a useful tool but not something they would rely on heavily." Their main concern was that the system does not yet learn or adapt to their unique content style, making some suggestions less relevant. For example, elements like editing style and video pacing are important in their content, and they felt that the system could not yet capture those aspects effectively.
+    - Despite their lighter engagement, they provided concrete UI suggestions for improving usability:
+        - Numbering paragraphs on the left side would help users keep track of sections more easily.
+        - Adding titles to input sections (script and custom prompt) would prevent them from forgetting what the contents are for.
+    - This participant represents a less dependent type of user — someone who already has a strong sense of their content style and sees the system as a secondary tool rather than an essential guide. Future improvements could focus on customization features that allow the system to learn from a creator's existing content style.
+
     
-    Participant 4: 
+    Participant 4: time in each stage (seconds): 15, 160, 150, 180. Number of Interactions (visualization-script, suggestion-script): 8, 2
+   - Participant 4 was not a content creator, which made their perspective particularly interesting. Since they lacked prior experience with script structuring, they spent significant time analyzing the visualizations (160 seconds) and reading suggestions (150 seconds) before making edits.
+   - They found the system understandable despite not being a creator, which speaks to its accessibility beyond professional use cases. They engaged heavily with the visualization (8 interactions), showing that even as a non-creator, they found it useful for understanding content flow and structure.
+   - Their main feedback focused on clarity and accessibility:
+       - The legends should be more detailed, ideally with a brief hover explanation or extra sentence. For example, explaining differences between storytelling and informational sections.
+       - Hover effects on the left paragraph panel — when hovering over a suggestion or timeline section, the corresponding paragraph should highlight.
+    - Although they are not the primary target audience, they pointed out a broader applicability for the system, especially for speechwriting. They noted that public speeches also require audience engagement and clear structure, making this tool valuable beyond video content. This insight suggests that the system has potential for expansion into general script editing tools, not just for video creators but also for public speakers, lecturers, and writers who need to refine their storytelling structure.
+
     
     Participant 5: 
     
@@ -26,7 +52,7 @@ Your goal is to assess the usability of your system.
     
     Participant 10: 
     
-2. [+1] DEPTH: Evaluate with 5 more participants. Feel free to make changes to your system between the first and second round of evaluation. If you do make changes, summarize the changes you made and why.
+3. [+1] DEPTH: Evaluate with 5 more participants. Feel free to make changes to your system between the first and second round of evaluation. If you do make changes, summarize the changes you made and why.
 
 ## After your evaluation [+4]
 
