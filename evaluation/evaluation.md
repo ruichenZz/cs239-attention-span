@@ -210,3 +210,4 @@ Did you use a generative AI tool for this assignment? If so, which tool(s) and h
 How much time did you spend on this assignment as a group? individually?
 
 Zihan Jiang: 6 hr
+Weihan Qu: 5 hr
