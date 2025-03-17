@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-function Timeline({ data }) {
+function Timeline({ data, setHoveredParagraph, setClickedParagraph }) {
   if (!data?.duration) return null;
 
   const totalDuration = data.duration.reduce((sum, curr) => sum + curr, 0);
@@ -25,9 +25,6 @@ function Timeline({ data }) {
 
   return (
     <Box sx={{ mb: 2 }}>
-      <Typography variant="h6" gutterBottom>
-        Timeline
-      </Typography>
       <Box
         sx={{
           display: "flex",
@@ -62,6 +59,9 @@ function Timeline({ data }) {
                 borderRight: "1px solid #fff",
               }}
               title={`Paragraph ${index + 1}: ${categories.join(", ")}`}
+              onMouseEnter={() => setHoveredParagraph(index)}
+              onMouseLeave={() => setHoveredParagraph(null)}
+              onClick={() => setClickedParagraph(index)}
             />
           );
         })}
