@@ -34,7 +34,7 @@ Your goal is to assess the usability of your system.
 - For any qualitative data where you cannot easily remember the details of the results, a thematic analysis is required. When you conduct a thematic analysis, include your codebook.
 - For any quantitative data, submit a script for analysis + your data. Recommendation: Create a notebook for your analysis. Someone should be able to run your notebook to reproduce your results.
 
-###Qualitative Data:
+### Qualitative Data:
 
 1. Usefulness and Actionability
 
@@ -80,7 +80,7 @@ Example Feedback:
 "I got how to use it pretty quickly, but there could be a heading on each text box so that they are easier to be reviewed."
 
 
-##Quantitative Data:
+### Quantitative Data:
 (graph see the jupyter notebook)
 
 - Ease of Use: Participants were able to find out how to use the system relatively quickly.
@@ -91,7 +91,7 @@ Example Feedback:
 
 
 
-### Group Reflection [+1]
+## Group Reflection [+1]
 
 _1. What is one thing that went well in your evaluation?_
 
