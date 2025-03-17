@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv("en.env")
 openai_api_key = os.getenv("OPENAI_API_KEY")
-lm = dspy.LM('openai/gpt-4o-mini', api_key=openai_api_key)
+lm = dspy.LM('openai/gpt-4o', api_key=openai_api_key)
 dspy.configure(lm=lm)
 
 SAMPLE_SCRIPT = """Welcome to our channel, where innovation and creativity merge with data-driven insights to transform business landscapes. Today, we explore how leveraging advanced analytics and compelling storytelling can redefine success in a competitive market. Join us as we journey through strategies that empower you to make informed decisions with confidence.
@@ -30,75 +30,116 @@ In conclusion, our comprehensive analysis combines strategic insights, engaging 
 
 
 class script_checker(dspy.Signature):
+    # """
+    # Analyze the provided script to enhance clarity, viewer engagement, emotional impact, and pacing.
+
+    # The input script is structured as a list of distinct paragraphs. Your task involves two key components:
+
+    # 1. **General Feedback**: Provide clear, actionable feedback to improve overall script clarity, structure, pacing, and audience retention.
+    #    Example: "Paragraph 1 is densely packed with technical details; consider splitting it up or pairing it with visual examples to improve viewer understanding."
+
+    # 2. **Paragraph Categorization**: Each paragraph must be assigned exactly **one** category from the following (strictly no overlaps):
+
+    # - **Informational**:
+    #   - Paragraphs primarily focused on presenting detailed statistics, technical explanations, data, facts, or educational information.
+    #   - Example: "Recent analytics data reveals a 30% increase in engagement when visuals are included."
+
+    # - **Comedic**:
+    #   - Paragraphs explicitly designed to introduce humor, levity, or entertainment value.
+    #   - Example: "Did you hear about the creator who filled his video with pie charts? He ended up with nothing but crumbs."
+
+    # - **Storytelling**:
+    #   - Paragraphs built around narrative elements, personal anecdotes, or emotional stories.
+    #   - Example: "I still remember the first video I made. It was far from perfect, but that first step taught me invaluable lessons."
+
+    # - **Visual Presentation (Explicit Inserts Only)**:
+    #   - Paragraphs explicitly instructing the insertion of specific visual elements (images, infographics, charts, video clips).
+    #   - Must contain a clear, explicit instruction like "[Insert a bar chart comparing last year's and this year's sales figures here]."
+    #   - Example: "[Insert an infographic clearly illustrating viewer retention rates over the past quarter]."
+
+    # - **Neutral**:
+    #   - Paragraphs that serve as introductions, transitions, or conclusions without clearly fitting into other categories.
+    #   - Welcome to today's video! ...... So, let's jump in!
+
+    # 3. **Duration Estimations**: Provide an estimated duration (in seconds) for each paragraph. The length of the durations list must exactly match the input length.
+
+    # ### Important Rules:
+    # - Each paragraph can mostly belong to one or two category, choose what's most fitting
+    # - Only explicitly indicated visual insertions qualify as "Visual Presentation."
+
+    # ### Complete Example:
+
+    # **Sample Input Script:**
+    # [
+    #     "Welcome to today's analysis video. We'll uncover ways to boost viewer retention.",
+    #     "[Insert a clear infographic showing audience retention drop-off rates.]",
+    #     "My first video was a disaster; I lost my viewers in seconds—but that taught me a powerful lesson.",
+    #     "Analytics clearly indicate that visual elements significantly improve retention.",
+    #     "Here's a funny fact: more viewers watch cat videos than professional tutorials.",
+    #     "To summarize, blend storytelling, clear information, visuals, and humor for best results."
+    # ]
+
+    # **Correct Output Example:**
+    # - feedback: "Consider pairing paragraph 4’s dense information with visual aids. Paragraph 2 clearly defines the visual element; ensure its quality. The humorous approach in paragraph 5 effectively adds variety."
+    # - information: [3]
+    # - comedic: [4]
+    # - storytelling: [2]
+    # - visual_presentation: [1]
+    # - neutral: [0, 5]
+    # - duration: [5.0, 7.0, 8.0, 7.5, 5.0, 6.0]
+
+    # ### Additional Example for Clarification:
+
+    # **Sample Input Script:**
+    # [
+    #     "Did you know adding visuals can boost engagement by up to 50%?",
+    #     "[Insert a bar graph comparing engagement with and without visuals.]",
+    #     "One day, I experimented by removing visuals from my videos, and viewer engagement plummeted dramatically.",
+    #     "Balancing information and storytelling keeps your audience captivated until the end."
+    # ]
+
+    # **Correct Output Example:**
+    # - feedback: "Paragraph 1 contains good data; pair it closely with the explicit visual mentioned in paragraph 2. Paragraph 3’s storytelling effectively illustrates a key point."
+    # - information: [0]
+    # - comedic: []
+    # - storytelling: [2]
+    # - visual_presentation: [1]
+    # - neutral: [3]
+    # - duration: [6.5, 5.0, 7.5, 6.0]
+
+    # Follow these explicit guidelines strictly, accurate categorization according to explicit instructions, and precise duration estimation matching the input length.
+    # Longer feedback is better, as long as it is relevant and actionable.
+    # """
     """
-    Analyze the provided script to enhance clarity, viewer engagement, emotional impact, and pacing.
+    You are a highly attentive and precise AI assistant designed to help content creators analyze their video scripts. Your job is to carefully analyze each paragraph of the provided script, categorizing them based on their primary characteristics to help creators optimize for engagement, clarity, and pacing.
 
-    The input script is structured as a list of distinct paragraphs. Your task involves two key components:
+    ### Analysis Guidelines:
+    - **Informational**: Paragraph is primarily educational, data-rich, contains statistics or facts.
+    - **Comedic**: Paragraph intentionally includes humor, jokes, amusing anecdotes, or playful tone.
+    - **Storytelling**: Paragraph primarily uses personal stories, narratives, anecdotes, or relatable experiences to illustrate a point.
+    - **Visual_Presentation**: Paragraph explicitly describes a visual to be inserted into the video (e.g., "[Insert a bar graph showing data trends here]" or "[Insert a short clip of users interacting with the product]").
+    - **Neutral**: Paragraph does not clearly fall into any of the above categories or is transitional.
 
-    1. **General Feedback**: Provide clear, actionable feedback to improve overall script clarity, structure, pacing, and audience retention.
-       Example: "Paragraph 1 is densely packed with technical details; consider splitting it up or pairing it with visual examples to improve viewer understanding."
+    **Important**: If a paragraph genuinely fits into **two** categories, clearly list it in **both** categories (maximum two).  
+    - Examples of justified dual categorization include:
+      - An anecdote (storytelling) told humorously (comedic + storytelling).
+      - A data-rich statement explicitly instructing to insert a specific visual aid (informational + visual_presentation).
+      - A humorous joke that also references explicit visuals (comedic + visual_presentation).
 
-    2. **Paragraph Categorization**: Each paragraph must be assigned exactly **one** category from the following (strictly no overlaps):
+    ### Strong Emphasis on User Goals:
+    - If the user has provided a specific goal or instruction (e.g., "maximize emotional appeal," "ensure clarity of visuals," "enhance viewer retention"), give it top priority and tailor your categorization and feedback explicitly to address this goal.
 
-    - **Informational**:
-      - Paragraphs primarily focused on presenting detailed statistics, technical explanations, data, facts, or educational information.
-      - Example: "Recent analytics data reveals a 30% increase in engagement when visuals are included."
+    ### **Detailed Correct Output Examples**:
 
-    - **Comedic**:
-      - Paragraphs explicitly designed to introduce humor, levity, or entertainment value.
-      - Example: "Did you hear about the creator who filled his video with pie charts? He ended up with nothing but crumbs."
-
-    - **Storytelling**:
-      - Paragraphs built around narrative elements, personal anecdotes, or emotional stories.
-      - Example: "I still remember the first video I made. It was far from perfect, but that first step taught me invaluable lessons."
-
-    - **Visual Presentation (Explicit Inserts Only)**:
-      - Paragraphs explicitly instructing the insertion of specific visual elements (images, infographics, charts, video clips).
-      - Must contain a clear, explicit instruction like "[Insert a bar chart comparing last year's and this year's sales figures here]."
-      - Example: "[Insert an infographic clearly illustrating viewer retention rates over the past quarter]."
-
-    - **Neutral**:
-      - Paragraphs that serve as introductions, transitions, or conclusions without clearly fitting into other categories.
-      - Welcome to today's video! ...... So, let's jump in!
-
-    3. **Duration Estimations**: Provide an estimated duration (in seconds) for each paragraph. The length of the durations list must exactly match the input length.
-
-    ### Important Rules:
-    - Each paragraph can belong to exactly **one** category—no exceptions or overlaps.
-    - Only explicitly indicated visual insertions qualify as "Visual Presentation."
-
-    ### Complete Example:
-
-    **Sample Input Script:**
+    **Example 1 Input (No user goal specified):**
     [
-        "Welcome to today's analysis video. We'll uncover ways to boost viewer retention.",
-        "[Insert a clear infographic showing audience retention drop-off rates.]",
-        "My first video was a disaster; I lost my viewers in seconds—but that taught me a powerful lesson.",
-        "Analytics clearly indicate that visual elements significantly improve retention.",
-        "Here's a funny fact: more viewers watch cat videos than professional tutorials.",
-        "To summarize, blend storytelling, clear information, visuals, and humor for best results."
+      "Did you know adding visuals can boost engagement by up to 50%?",
+      "[Insert a bar graph comparing engagement with and without visuals.]",
+      "One day, I experimented by removing visuals from my videos, and viewer engagement plummeted dramatically.",
+      "Balancing information and storytelling keeps your audience captivated until the end."
     ]
 
-    **Correct Output Example:**
-    - feedback: "Consider pairing paragraph 4’s dense information with visual aids. Paragraph 2 clearly defines the visual element; ensure its quality. The humorous approach in paragraph 5 effectively adds variety."
-    - information: [3]
-    - comedic: [4]
-    - storytelling: [2]
-    - visual_presentation: [1]
-    - neutral: [0, 5]
-    - duration: [5.0, 7.0, 8.0, 7.5, 5.0, 6.0]
-
-    ### Additional Example for Clarification:
-
-    **Sample Input Script:**
-    [
-        "Did you know adding visuals can boost engagement by up to 50%?",
-        "[Insert a bar graph comparing engagement with and without visuals.]",
-        "One day, I experimented by removing visuals from my videos, and viewer engagement plummeted dramatically.",
-        "Balancing information and storytelling keeps your audience captivated until the end."
-    ]
-
-    **Correct Output Example:**
+    **Correct Output:**
     - feedback: "Paragraph 1 contains good data; pair it closely with the explicit visual mentioned in paragraph 2. Paragraph 3’s storytelling effectively illustrates a key point."
     - information: [0]
     - comedic: []
@@ -107,7 +148,36 @@ class script_checker(dspy.Signature):
     - neutral: [3]
     - duration: [6.5, 5.0, 7.5, 6.0]
 
-    Follow these explicit guidelines strictly, ensuring exactly one category per paragraph without overlap, accurate categorization according to explicit instructions, and precise duration estimation matching the input length.
+    ---
+
+    **Example 2 Input (User goal specified):**
+    _User Goal_: "Make this script more engaging and humorous."
+
+    [
+      "Studies show viewer engagement decreases significantly after 2 minutes of purely informational content.",
+      "[Insert a visual here showing viewer retention dropping over time.]",
+      "To illustrate, remember that awkward feeling when your detailed explanations made your viewers doze off mid-video?",
+      "Always balance your detailed information with relatable stories or jokes—your audience will thank you."
+    ]
+
+    **Correct Output:**
+    - feedback: "To meet your goal of making the script more engaging and humorous, paragraph 3’s comedic storytelling is highly effective. Consider enhancing paragraph 1's clarity by pairing closely with the visual described in paragraph 2."
+    - information: [0]
+    - comedic: [2, 3]
+    - storytelling: [2]
+    - visual_presentation: [1]
+    - neutral: []
+    - duration: [7.0, 5.5, 8.0, 7.5]
+
+    ---
+
+    ### **Output Constraints Recap:**
+    - Clearly provide paragraph indices (starting from 0) within each appropriate category.
+    - Allow up to a maximum of **two categories per paragraph** (but only when strongly justified).
+    - If the user specifies a goal or prompt, explicitly mention how your feedback and categorization address their goal.
+
+    Now, carefully analyze the provided script paragraphs and generate your output.
+
     """
     script: list[str] = dspy.InputField(desc="The script to analyze, with each paragraph as a separate element.")
     goals: str = dspy.InputField(desc="The desired outcomes or engagement goals for the script.")
