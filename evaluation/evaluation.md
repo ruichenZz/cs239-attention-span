@@ -40,18 +40,35 @@ Your goal is to assess the usability of your system.
     - Although they are not the primary target audience, they pointed out a broader applicability for the system, especially for speechwriting. They noted that public speeches also require audience engagement and clear structure, making this tool valuable beyond video content. This insight suggests that the system has potential for expansion into general script editing tools, not just for video creators but also for public speakers, lecturers, and writers who need to refine their storytelling structure.
 
     
-    Participant 5: 
+    Participant 5: time in each stage (seconds): 50, 34, 35, 190. Number of Interactions (visualization-script, suggestion-script): 2, 4
+    - Participant 5 was not a content creator. He tested the system with a sample script. The participants mainly plays around with the system at the beginning since he doesn't have a concrete plan in mind, plus he doesn't really know about the sample script's content. After using the check script function, he become interested with the visualization: highlights and timeline, and invested into the feedbacks and edit script back-and-forth 4 times.
+    - He founds the system easy to use and the categories are well defined.
     
-    Participant 6: 
+    Participant 6: time in each stage (seconds): 50, 180, 180, 450. Number of Interactions (visualization-script, suggestion-script): 4, 4
+    - Participant 6 was a content creator. He spent a lot of time using and testing the system. First, he copy-and-paste a dialogue focused movie-script into the system to see what response it generates. However our system was not fine-tuned for tasks other than regular long videos, so the response wasn't clear or actionable. Then he also uses the sample script, spending 3 mins in looking at visualizations and reading suggestions each, trying to understand how the system works. Then he spent 7 mins edit the script based on the suggestions.
+    - Participant like the system overall but he made several good suggestions: 
+        - Each blocks in the timeline should be clickable, otherwise it's confusing how does it relates to each paragraph. One possible solution is to highlight the corresponding paragraph after clicking on the segment in the timeline.
+        - Add serial numbers on the left of each paragraph to improve readibility, since current format makes it confusing to navigate through the page.
+        - Add more details to feedbacks, let the AI model generate more concrete and actionable example with each feedback. If the feedback says: "Add more anecdotes to xxx part", give some specific examples of it that helps user understand the suggestion.
+    - He like the system but think there's much to improve before it becomes a good productivity tool that he can use for making videos.
+
+    Participant 7: time in each stage (seconds): 60, 55, 150, 50. Number of Interactions (visualization-script, suggestion-script): 2, 2
+    - Participant 7 is not a content creator. She explores the initial page for a brief moment, then use our provided sample script. However, this time she inputed Chinese instructions in the goal section. She instructed the system to "Remove unnecessary comedy paragraphs from the script" after reading the sample script and find many parts of it tedious and not funny. The system/AI agent understands her instruction well and gave her feedbacks on which paragraph she should cut. She spent a lot of time understanding the suggestion. She made similar remark to participant 6 about the timeline being un-clickable is very confusing. Then finally she edit the script by deleting parts of several paragraphs she found unnecessary.
+    - She also commented on the fact that the paragraph index in the feedback start with 0 instead of 1, which is very unintuitive for general users (non cs students/programmers).
     
-    Participant 7: 
+    Participant 8: time in each stage (seconds): 80, 50, 60, 120. Number of Interactions (visualization-script, suggestion-script): 4, 4
+    - Participant 8 evaluated the system without much guidance from us at the start. He spent a while figuring out what to write. Since he only provided a short original script, consisting of only three paragraphs, he spent less time in the next two stages. Then in order to expand his script he uses the goal section to ask the AI for some content suggestion and generation. However the AI didn't output a lot of generated content beyond standard editting feedbacks.
+    - Participant suggests a download, as well as an upload function, to help with the workflow, since he want to save his script after the session. 
+    - He also wants more customization and freedom of the user-prompt so that the output suggestion can include more information than just standard feedbacks. in another word, make the uder-prompt more important and emphasized. 
     
-    Participant 8: 
+    Participant 9: time in each stage (seconds): 20, 76, 150, 100. Number of Interactions (visualization-script, suggestion-script): 1, 4
+    - Participant 9 uses the sample script. She like the segmentation function as well as the colors. She asks about the backend implementation of our system and suggests we add image/audio integration since we are using gpt-4o.
+    - She also thinks though the workflow loop is complete, the current system doesn't have a lot of functions to play with.
     
-    Participant 9: 
-    
-    Participant 10: 
-    
+    Participant 10: time in each stage (seconds): 30, 30, 130, 300. Number of Interactions (visualization-script, suggestion-script): 1, 6
+    - Participant 10 uses the sample script and didn't spend much time in the initial stage. She really likes the visualization of color gradient on highlighted text boxes as well as the timeline. Then, she plays around with editting the script for 5 mins, trying out how the feedback's going to change based on different edits. 
+    - She suggests a version control function that allows user to save and load versions/checkpoints of the script with different edits. 
+    - She also find the segmentation to be inconsistent, since unedited paragraphs might change category after checking the script again.
 3. [+1] DEPTH: Evaluate with 5 more participants. Feel free to make changes to your system between the first and second round of evaluation. If you do make changes, summarize the changes you made and why.
    
 Participant 1
