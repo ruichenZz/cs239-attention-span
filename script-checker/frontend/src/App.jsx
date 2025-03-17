@@ -35,6 +35,10 @@ function App() {
   // Ref to track cursor position in the multiline TextField
   const textFieldRef = useRef(null);
 
+  const [hoveredParagraph, setHoveredParagraph] = useState(null);
+  const [clickedParagraph, setClickedParagraph] = useState(null);
+
+
   const handleModeChange = (event, newMode) => {
     if (newMode !== null) {
       setMode(newMode);
@@ -157,7 +161,21 @@ function App() {
               >
                 <ToggleButton value="manual">Manual</ToggleButton>
                 <ToggleButton value="upload">File Upload</ToggleButton>
+                <Button
+                  variant="contained"
+                  onClick={handleSubmit}
+                  sx={{
+                    position: "fixed",
+                    bottom: "20%",
+                    left: "20px",
+                    transform: "translateY(-50%)",
+                    zIndex: 1000
+                  }}
+                >
+                  Check Script
+                </Button>
               </ToggleButtonGroup>
+
             )}
 
             {isReadOnly ? (
@@ -166,7 +184,7 @@ function App() {
               // ---------------------
               <>
                 {suggestions ? (
-                  <HighlightedScript script={script} suggestions={suggestions} />
+                  <HighlightedScript script={script} suggestions={suggestions} hoveredParagraph={hoveredParagraph} clickedParagraph={clickedParagraph} />
                 ) : (
                   <Box
                     sx={{
@@ -299,7 +317,7 @@ function App() {
               fullWidth
               sx={{ mb: 2 }}
             />
-            <Button variant="contained" fullWidth onClick={handleSubmit}>
+            <Button className="floating-button" variant="contained" fullWidth onClick={handleSubmit}>
               Check Script
             </Button>
             {error && (
@@ -321,7 +339,18 @@ function App() {
 
           {suggestions && (
             <Paper sx={{ p: 2, overflowY: "auto", flex: 1, mb: 2 }}>
-              <Timeline data={suggestions} />
+              
+              {/* Timeline Title */}
+              <Typography variant="h6" gutterBottom>
+                Timeline
+              </Typography>
+
+              {/* Total Duration Below Title */}
+              <Typography variant="body2" sx={{ fontWeight: "bold", color: "#64748b", textAlign: "right", mb: 1 }}>
+                About {suggestions?.duration?.reduce((acc, val) => acc + val, 0) || 0} seconds
+              </Typography>
+
+              <Timeline data={suggestions} setHoveredParagraph={setHoveredParagraph} setClickedParagraph={setClickedParagraph} />
 
               <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
                 Feedback
@@ -336,7 +365,7 @@ function App() {
               <Box sx={{ pl: 2 }}>
                 <Typography variant="subtitle1">
                   <strong>Informational Paragraphs:</strong>{" "}
-                  {suggestions.information.join(", ") || "None"}
+                  {suggestions.information.map((idx) => idx + 1).join(", ") || "None"}
                 </Typography>
                 <Typography variant="subtitle1">
                   <strong>Comedic Paragraphs:</strong>{" "}
@@ -353,6 +382,8 @@ function App() {
               </Box>
             </Paper>
           )}
+
+
 
           {/* Version History Panel */}
           {showVersions && (
