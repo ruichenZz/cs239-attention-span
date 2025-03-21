@@ -29,7 +29,7 @@ class ScriptRequest(BaseModel):
 @app.post("/check_script")
 async def check_script(request: ScriptRequest):
     """
-    Calls LangChain to process the script and returns suggestions.
+    Calls DSPy pipeline to process the script and returns suggestions.
     """
     try:
         # If user_prompt is empty, set it to None explicitly
